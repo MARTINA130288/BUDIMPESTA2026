@@ -197,8 +197,8 @@ textarea { width: 100%; min-height: 96px; border: 1px solid var(--line); border-
 
 nav.tabovi { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; background: var(--surface); border-top: 1px solid var(--line);
   padding-left: max(8px, env(safe-area-inset-left, 0px)); padding-right: max(8px, env(safe-area-inset-right, 0px)); padding-bottom: env(safe-area-inset-bottom, 0px); }
-nav.tabovi .in { max-width: 640px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
-nav.tabovi a { text-decoration: none; text-align: center; padding: 10px 2px 12px; font-size: 13px; font-weight: 500; color: var(--muted); border-top: 3px solid transparent; }
+nav.tabovi .in { max-width: 640px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); }
+nav.tabovi a { text-decoration: none; text-align: center; padding: 10px 2px 12px; font-size: 12.5px; min-width: 0; overflow-wrap: anywhere; font-weight: 500; color: var(--muted); border-top: 3px solid transparent; }
 nav.tabovi a[aria-current="page"] { color: var(--ink); border-top-color: var(--tram); font-weight: 600; }
 nav.tabovi a .ik { display: block; font-size: 18px; line-height: 1.2; }
 .toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(80px + env(safe-area-inset-bottom, 0px)); background: var(--ink); color: var(--bg); padding: 8px 14px; border-radius: 10px; font-size: 14px; z-index: 7; }
@@ -215,6 +215,7 @@ nav.tabovi a .ik { display: block; font-size: 18px; line-height: 1.2; }
   <div class="kodtraka" id="kodtraka" aria-live="polite"></div>
   <section id="v-pregled"></section>
   <section id="v-plan" hidden></section>
+  <section id="v-djeca" hidden></section>
   <section id="v-podsjetnik" hidden></section>
   <section id="v-javi" hidden></section>
 </main>
@@ -222,6 +223,7 @@ nav.tabovi a .ik { display: block; font-size: 18px; line-height: 1.2; }
 <nav class="tabovi" aria-label="Kartice"><div class="in">
   <a href="#pregled" data-v="pregled"><span class="ik" aria-hidden="true">⌂</span>Pregled</a>
   <a href="#plan" data-v="plan"><span class="ik" aria-hidden="true">☰</span>Plan</a>
+  <a href="#djeca" data-v="djeca"><span class="ik" aria-hidden="true">🎈</span>Djeca</a>
   <a href="#podsjetnik" data-v="podsjetnik"><span class="ik" aria-hidden="true">✓</span>Podsjetnik</a>
   <a href="#javi" data-v="javi"><span class="ik" aria-hidden="true">✉</span>Javi se</a>
 </div></nav>
@@ -452,19 +454,8 @@ function pregled() {
   h += `<div class="blok" id="parking"><h3>Parking u Budimpešti</h3><p class="mali" style="margin:0">Parking plaća svaki vozač sam. Kombi može samo na Astoriju.</p>${["astoria", "regus"].map(k => { const p = D.parking[k]; return `<div class="park"><b>${esc(p.naziv)}</b><span class="mut mali">${esc(p.adresa)}</span><span class="nap">${esc(p.opis)}</span><ol>${p.koraci.map(x => `<li>${esc(x)}</li>`).join("")}</ol><a class="btn" href="${esc(p.link)}" target="_blank" rel="noopener" style="align-self:flex-start">${k === "astoria" ? "Rezerviraj Astoriju ↗" : "Regus na karti ↗"}</a></div>`; }).join("")}</div>`;
   h += `<div class="blok"><h3>The Magic, subota u 13:00</h3><p style="margin:0" class="nap">Restoran u stilu Harryja Pottera, stol za 10 djece i 3 odrasla. Djeca biraju jelo do 7.12. (<a href="#podsjetnik">Podsjetnik</a>).</p></div>`;
   h += `<div class="blok"><h3>Na štandovima</h3><ul class="hrana">${D.hrana.map(([nz, c, d]) => `<li><span>${esc(nz)}${d ? ' <span class="zn djeca">djeca vole</span>' : ""}</span><span>${esc(c)}${uEur(c) ? `<br><b class="eur">${uEur(c)}</b>` : ""}</span></li>`).join("")}</ul><span class="mut mali">Cijene iz 2025. Iznosi u eurima su preračunati: 1 € ≈ ${TECAJ} HUF. Na Vörösmarty tér samo kartica.</span></div>`;
-  const zi = Math.floor(Math.random() * D.znas_li.length);
-  h += `<div class="kutak"><div class="kutak-vrh"><h3>🎈 Kutak za djecu</h3><span class="kutak-zn">Znaš li?</span></div>
-    <div class="kutak-kartica" id="znas" aria-live="polite">${zanimljivost(zi)}</div>
-    <div class="kutak-dno"><span class="tocke" aria-hidden="true">${D.znas_li.map((_, k) => `<i${k === zi ? ' class="on"' : ""}></i>`).join("")}</span><button class="kutak-btn" id="jos">Još jedno ✨</button></div></div>`;
-  if (D.kviz && D.kviz.length) h += `<div class="kutak kviz" id="kviz">${kvizHtml()}</div>`;
   h += `<p class="mut mali" style="margin:0">Ažurirano ${esc(D.azurirano)}. Plan i rokovi mogu se još mijenjati.</p>`;
   $("v-pregled").innerHTML = h;
-  let i = zi; $("jos").onclick = () => {
-    i = (i + 1) % D.znas_li.length;
-    const k = $("znas"); k.innerHTML = zanimljivost(i); k.classList.remove("skok"); void k.offsetWidth; k.classList.add("skok");
-    document.querySelectorAll(".tocke i").forEach((t, n) => t.classList.toggle("on", n === i));
-  };
-  if ($("kviz")) $("kviz").onclick = kvizKlik;
   $("v-pregled").querySelectorAll("[data-zg]").forEach(b => b.onclick = () => {
     if (!obiteljId) { toast("Najprije odaberite obitelj gore desno"); return; }
     if (!smijem()) return;
@@ -648,8 +639,25 @@ function javi() {
   };
 }
 
+/* ---------- Djeca (zasebna kartica od 23.11.: Kutak za djecu i Mali kviz) ---------- */
+let znasI = Math.floor(Math.random() * D.znas_li.length);
+function djeca() {
+  let h = `<h2>🎈 Za djecu</h2><p class="mut" style="margin:0">Zanimljivosti o Budimpešti i mali kviz – za put u autu ili večer prije polaska.</p>`;
+  h += `<div class="kutak"><div class="kutak-vrh"><h3>Znaš li?</h3><span class="kutak-zn">💡 ${D.znas_li.length} zanimljivosti</span></div>
+    <div class="kutak-kartica" id="znas" aria-live="polite">${zanimljivost(znasI)}</div>
+    <div class="kutak-dno"><span class="tocke" aria-hidden="true">${D.znas_li.map((_, k) => `<i${k === znasI ? ' class="on"' : ""}></i>`).join("")}</span><button class="kutak-btn" id="jos">Još jedno ✨</button></div></div>`;
+  if (D.kviz && D.kviz.length) h += `<div class="kutak kviz" id="kviz">${kvizHtml()}</div>`;
+  $("v-djeca").innerHTML = h;
+  $("jos").onclick = () => {
+    znasI = (znasI + 1) % D.znas_li.length;
+    const k = $("znas"); k.innerHTML = zanimljivost(znasI); k.classList.remove("skok"); void k.offsetWidth; k.classList.add("skok");
+    document.querySelectorAll(".tocke i").forEach((t, n) => t.classList.toggle("on", n === znasI));
+  };
+  if ($("kviz")) $("kviz").onclick = kvizKlik;
+}
+
 /* ---------- Okvir ---------- */
-const VIEWS = { pregled, plan, podsjetnik, javi };
+const VIEWS = { pregled, plan, djeca, podsjetnik, javi };
 function prikazi(naVrh = true) {
   const v = (location.hash || "#pregled").slice(1);
   const ime = VIEWS[v] ? v : "pregled";

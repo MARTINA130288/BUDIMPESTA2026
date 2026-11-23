@@ -133,6 +133,12 @@ details.blok summary { cursor: pointer; font-weight: 600; }
 /* Kod obitelji i stanje slanja (Google tablica) */
 .kodtraka { max-width: 640px; margin: 0 auto 16px; }
 .kodtraka:empty { display: none; }
+.odabir-obitelji { background: var(--tram); color: var(--tram-ink); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 0 0 4px color-mix(in srgb, var(--tram) 35%, transparent); }
+.odabir-obitelji > b { font-family: var(--f-display); font-weight: 800; font-size: 22px; line-height: 1.2; }
+.obitelji-gumbi { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 8px; margin-top: 4px; }
+.obitelji-gumbi button { background: var(--tram-ink); color: var(--tram); border: 0; border-radius: 10px; padding: 12px 6px; font-weight: 800; font-size: 16px; letter-spacing: .03em; cursor: pointer; }
+header.top select.istakni { background: var(--tram); color: var(--tram-ink); outline: 3px solid var(--tram); outline-offset: 2px; animation: puls 1.6s ease-in-out infinite; }
+@keyframes puls { 50% { outline-color: transparent; } }
 .kod-unos { display: flex; gap: 8px; flex-wrap: wrap; }
 .kod-unos input { font-weight: 600; letter-spacing: .15em; text-transform: uppercase; width: 9em; border: 0; border-radius: 10px; padding: 9px 12px; background: var(--surface); color: var(--ink); }
 .stanje-slanja { font-size: 13px; color: var(--muted); display: flex; gap: 8px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
@@ -154,7 +160,7 @@ nav.tabovi a { text-decoration: none; text-align: center; padding: 10px 2px 12px
 nav.tabovi a[aria-current="page"] { color: var(--ink); border-top-color: var(--tram); font-weight: 600; }
 nav.tabovi a .ik { display: block; font-size: 18px; line-height: 1.2; }
 .toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(80px + env(safe-area-inset-bottom, 0px)); background: var(--ink); color: var(--bg); padding: 8px 14px; border-radius: 10px; font-size: 14px; z-index: 7; }
-@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 </style>
 </head>
 <body>
@@ -262,7 +268,15 @@ async function sinkroniziraj(dodatno) {
 }
 function kodTraka() {
   const el = $("kodtraka");
-  if (!S || !obiteljId) { el.innerHTML = ""; return; }
+  $("obitelj").classList.toggle("istakni", !obiteljId);
+  if (!obiteljId) {
+    el.innerHTML = `<div class="odabir-obitelji"><b>Najprije odaberite svoju obitelj</b><span class="mali">Oznaka obitelji su početna slova vaših imena. Tada vidite svoj apartman, cijenu, parking i podsjetnik.</span>
+      <div class="obitelji-gumbi">${D.obitelji.map(o => `<button type="button" data-ob="${o.id}">${esc(o.ime)}</button>`).join("")}</div>
+      <span class="mali">Kasnije se mijenja gore, kod „Mi smo”.</span></div>`;
+    el.querySelectorAll("[data-ob]").forEach(b => b.onclick = () => { const s = $("obitelj"); s.value = b.dataset.ob; s.onchange(); });
+    return;
+  }
+  if (!S) { el.innerHTML = ""; return; }
   if (!kod) {
     el.innerHTML = `<div class="rok"><b>Upišite kod obitelji ${esc(oznaka(obiteljId))}</b><span class="mali">Kod vam je Martina poslala u poruci. Upisuje se samo jednom na ovom mobitelu. Bez koda se za ovu obitelj ne može ništa označiti.</span>
       <form class="kod-unos" id="kodforma"><input id="kodpolje" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="12" aria-label="Kod obitelji" placeholder="kod"><button class="btn" type="submit">Potvrdi</button></form></div>`;
@@ -334,8 +348,6 @@ function pregled() {
       <dt>Vozimo se</dt><dd>${o.vozilo === "kombi" ? "kombijem" : "svojim autom"}</dd>
       <dt>Parking</dt><dd>${o.parking === "astoria" ? `${esc(D.parking.astoria.kratko)}${o.parking_stanje ? ` <span class="zn ${o.parking_stanje === "rezervirano" ? "djeca" : "fak"}">${esc(o.parking_stanje)}</span>` : ""}${o.vozilo === "kombi" ? `<br><span class="mut mali">Kombi ne stane u garažu Regus (najviše 1,90 m).</span>` : ""}` : `opcija 1 Astoria (rezervacija online) ili opcija 2 Regus (bez rezervacije)<br><span class="mut mali">Upute korak po korak su niže, u dijelu Parking.</span>`}</dd>
     </dl></div>`;
-  } else {
-    h += `<div class="blok"><h3>Odaberite svoju obitelj</h3><p class="mut" style="margin:0">Gore desno, „Mi smo”. Oznaka obitelji su početna slova vaših imena. Tada vidite svoj apartman, parking i svoj podsjetnik.</p></div>`;
   }
   h += `<div class="blok"><h3>Smještaj</h3><dl class="kv">
     <dt>Budimpešta</dt><dd><a href="${mapa("Szép utca 5, Budapest")}" target="_blank" rel="noopener">A Golden Star, Szép utca 5 ↗</a><br><span class="mut mali">Prijava 15–20 h, odjava do 11 h. Nema recepcije: kodove za ulaz Martina prosljeđuje na dan dolaska. Nema doručka. Lift do 1. kata.</span></dd>

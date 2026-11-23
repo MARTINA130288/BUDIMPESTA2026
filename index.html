@@ -156,7 +156,8 @@ textarea { width: 100%; min-height: 96px; border: 1px solid var(--line); border-
 
 .hrana { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
 .hrana li { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; }
-.hrana span:last-child { color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.hrana span:last-child { color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; text-align: right; }
+.hrana .eur { color: var(--ink); font-weight: 600; }
 
 nav.tabovi { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; background: var(--surface); border-top: 1px solid var(--line);
   padding-left: max(8px, env(safe-area-inset-left, 0px)); padding-right: max(8px, env(safe-area-inset-right, 0px)); padding-bottom: env(safe-area-inset-bottom, 0px); }
@@ -342,6 +343,13 @@ setInterval(() => {
   if (new Date(D.polazak) <= new Date()) { prikazi(false); return; }
   el.innerHTML = satHtml();
 }, 1000);
+/* HUF → EUR za cijene na štandovima („2.800–4.900 HUF” → „≈ 7,20–12,60 €”), zaokruženo na 10 centi */
+const TECAJ = 390;
+function uEur(c) {
+  if (!/HUF/.test(c)) return "";
+  const b = (c.match(/\d[\d.]*/g) || []).map(x => Number(x.replace(/\./g, "")) / TECAJ);
+  return b.length ? "≈ " + b.map(e => (Math.round(e * 10) / 10).toFixed(2).replace(".", ",")).join("–") + " €" : "";
+}
 function pregled() {
   const o = ob();
   const pk = o ? D.parking[o.parking] : null;
@@ -373,7 +381,7 @@ function pregled() {
   </dl></div>`;
   h += `<div class="blok" id="parking"><h3>Parking u Budimpešti</h3><p class="mali" style="margin:0">Parking plaća svaki vozač sam. Kombi može samo na Astoriju.</p>${["astoria", "regus"].map(k => { const p = D.parking[k]; return `<div class="park"><b>${esc(p.naziv)}</b><span class="mut mali">${esc(p.adresa)}</span><span class="nap">${esc(p.opis)}</span><ol>${p.koraci.map(x => `<li>${esc(x)}</li>`).join("")}</ol><a class="btn" href="${esc(p.link)}" target="_blank" rel="noopener" style="align-self:flex-start">${k === "astoria" ? "Rezerviraj Astoriju ↗" : "Regus na karti ↗"}</a></div>`; }).join("")}</div>`;
   h += `<div class="blok"><h3>The Magic, subota u 13:00</h3><p style="margin:0" class="nap">Restoran u stilu Harryja Pottera, stol za 10 djece i 3 odrasla. Djeca biraju jelo do 7.12. (<a href="#podsjetnik">Podsjetnik</a>).</p></div>`;
-  h += `<div class="blok"><h3>Na štandovima</h3><ul class="hrana">${D.hrana.map(([nz, c, d]) => `<li><span>${esc(nz)}${d ? ' <span class="zn djeca">djeca vole</span>' : ""}</span><span>${esc(c)}</span></li>`).join("")}</ul><span class="mut mali">Cijene iz 2025. 1 € ≈ 390 HUF. Na Vörösmarty tér samo kartica.</span></div>`;
+  h += `<div class="blok"><h3>Na štandovima</h3><ul class="hrana">${D.hrana.map(([nz, c, d]) => `<li><span>${esc(nz)}${d ? ' <span class="zn djeca">djeca vole</span>' : ""}</span><span>${esc(c)}${uEur(c) ? `<br><b class="eur">${uEur(c)}</b>` : ""}</span></li>`).join("")}</ul><span class="mut mali">Cijene iz 2025. Iznosi u eurima su preračunati: 1 € ≈ ${TECAJ} HUF. Na Vörösmarty tér samo kartica.</span></div>`;
   const zi = Math.floor(Math.random() * D.znas_li.length);
   h += `<div class="blok"><span class="oznaka-sekcije">Znaš li? · za djecu</span><p style="margin:0" id="znas">${esc(D.znas_li[zi])}</p><button class="btn" id="jos" style="align-self:flex-start">Još jedno</button></div>`;
   h += `<p class="mut mali" style="margin:0">Ažurirano ${esc(D.azurirano)}. Plan i rokovi mogu se još mijenjati.</p>`;

@@ -62,6 +62,11 @@ h3 { font-family: var(--f-display); font-weight: 600; font-size: 18px; margin: 0
 
 .hero { display: flex; flex-direction: column; gap: 6px; padding-block: 4px 4px; }
 .odbrojavanje { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.sat { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 2px; }
+.sat > div { background: var(--ink); color: var(--bg); border-radius: 12px; padding: 10px 2px 8px; display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 0; }
+.sat b { font-family: var(--f-display); font-weight: 800; font-size: clamp(30px, 10vw, 44px); line-height: 1; font-variant-numeric: tabular-nums; }
+.sat span { font-size: 12px; opacity: .8; }
+.sat > .sek { background: var(--tram); color: var(--tram-ink); }
 .odbrojavanje b { font-family: var(--f-display); font-weight: 800; font-size: 56px; line-height: 1; font-variant-numeric: tabular-nums; }
 .rok { background: var(--tram); color: var(--tram-ink); border-radius: 12px; padding: 12px 16px; display: flex; flex-direction: column; gap: 6px; }
 .rok b { font-family: var(--f-display); font-size: 17px; }
@@ -324,12 +329,27 @@ const mapa = q => "https://www.google.com/maps/search/?api=1&query=" + encodeURI
 function toast(t) { const el = $("toast"); el.textContent = t; el.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => el.hidden = true, 2600); }
 
 /* ---------- Pregled ---------- */
-function danaDo() { const ms = new Date(D.polazak) - new Date(); return Math.ceil(ms / 86400000); }
+/* Sat koji otkucava do polaska (Martina 23.11.) */
+const mn = (n, f) => f[n % 10 === 1 && n % 100 !== 11 ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : 2];
+function satHtml() {
+  const s = Math.max(0, Math.floor((new Date(D.polazak) - new Date()) / 1000));
+  const v = [[Math.floor(s / 86400), ["dan", "dana", "dana"]], [Math.floor(s % 86400 / 3600), ["sat", "sata", "sati"]],
+    [Math.floor(s % 3600 / 60), ["minuta", "minute", "minuta"]], [s % 60, ["sekunda", "sekunde", "sekundi"]]];
+  return v.map(([n, f], i) => `<div${i === 3 ? ' class="sek"' : ""}><b>${i ? String(n).padStart(2, "0") : n}</b><span>${mn(n, f)}</span></div>`).join("");
+}
+setInterval(() => {
+  const el = document.getElementById("sat"); if (!el) return;
+  if (new Date(D.polazak) <= new Date()) { prikazi(false); return; }
+  el.innerHTML = satHtml();
+}, 1000);
 function pregled() {
-  const o = ob(), n = danaDo();
+  const o = ob();
   const pk = o ? D.parking[o.parking] : null;
-  // Redoslijed (Martina 23.11.): odabir obitelji (traka na vrhu), Zagreb, fakultativne aktivnosti, pa odbrojavanje
-  let h = "";
+  // Redoslijed (Martina 23.11.): odabir obitelji (traka na vrhu), sat do polaska, Zagreb, fakultativne aktivnosti
+  let h = `<div class="hero"><span class="oznaka-sekcije">10.–13. prosinca 2026. · 7 obitelji · 23 putnika</span>`;
+  h += new Date() < new Date(D.polazak) ? `<div class="sat" id="sat" role="timer" aria-label="Vrijeme do polaska">${satHtml()}</div><span class="mali mut">do polaska iz Solina · četvrtak 10.12. u 16:00</span>`
+    : (new Date() < new Date(D.povratak) ? `<h2>Sretan put!</h2>` : `<h2>Hvala svima na putovanju!</h2>`);
+  h += `</div>`;
   const zg = D.zagreb, zi2 = izbori.zagreb_nocenje || "";
   h += `<div class="blok zagreb"><span class="oznaka-sekcije">Najvažnije · javite do ${esc(zg.javiti_do)}</span><h3>Idete li preko Zagreba?</h3>
     <p style="margin:0" class="nap">${esc(zg.nocenje)}, ${esc(zg.objekt)}. ${esc(zg.zasto)}</p>
@@ -339,10 +359,6 @@ function pregled() {
       : `<a class="btn glavni" href="#javi" style="align-self:flex-start">Pošalji odgovor Martini</a>`) : ""}
   </div>`;
   h += `<div class="rok"><b>Do ${esc(D.javiti_do)} javite na što biste voljeli ići</b><span class="mali">Fakultativne aktivnosti: u Planu kod svake izaberite <strong>Idemo svi</strong>, <strong>Samo djeca</strong> ili <strong>Ne idemo</strong>. ${esc(D.javiti_zasto)}</span><a class="btn" href="#plan">Označi u planu</a></div>`;
-  h += `<div class="hero"><span class="oznaka-sekcije">10.–13. prosinca 2026. · 7 obitelji · 23 putnika</span>`;
-  h += n > 0 ? `<div class="odbrojavanje"><b>${n}</b><span>${n % 10 === 1 && n % 100 !== 11 ? "dan" : "dana"} do polaska iz Solina<br><span class="mut mali">četvrtak 10.12. u 16:00</span></span></div>`
-    : (new Date() < new Date(D.povratak) ? `<h2>Sretan put!</h2>` : `<h2>Hvala svima na putovanju!</h2>`);
-  h += `</div>`;
   if (o) {
     h += `<div class="blok"><span class="oznaka-sekcije">Obitelj ${esc(o.ime)}</span><h3>Vaš smještaj u Golden Staru</h3><dl class="kv">
       <dt>Jedinica</dt><dd>${esc(o.jedinica)}</dd>

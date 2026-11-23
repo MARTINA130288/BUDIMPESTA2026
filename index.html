@@ -66,7 +66,11 @@ header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; b
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 10px; }
 header.top::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 26px; background: var(--lampice) repeat-x; pointer-events: none; }
 header.top .in { max-width: 640px; margin: 0 auto; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: space-between; }
-header.top h1 { font-family: var(--f-display); font-weight: 800; font-size: 18px; margin: 0; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px; }
+header.top h1 { font-family: var(--f-display); font-weight: 800; font-size: 18px; margin: 0; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px; min-width: 0; margin-right: auto; }
+.osvjezi { border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.08); color: var(--noc-ink); border-radius: 999px; padding: 4px 12px; font-size: 13px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+.osvjezi span { font-size: 16px; line-height: 1; display: inline-block; }
+.osvjezi.vrti span { animation: vrti .8s linear infinite; }
+@keyframes vrti { to { transform: rotate(360deg); } }
 .linija { background: var(--tram); color: var(--tram-ink); font-size: 12px; font-weight: 800; border-radius: 4px; padding: 1px 6px; letter-spacing: 0.02em; }
 header.top label { font-size: 12px; opacity: .8; margin-right: 6px; }
 header.top select { background: var(--surface); color: var(--ink); border: 0; border-radius: 8px; padding: 6px 8px; font-weight: 600; max-width: 60vw; }
@@ -275,6 +279,7 @@ nav.tabovi a[aria-current="page"] .ik { background: var(--tram); color: var(--tr
 <body>
 <header class="top"><div class="in">
   <h1><span class="linija">BP</span> Budimpešta advent</h1>
+  <button class="osvjezi" id="osvjezi" type="button" aria-label="Osvježi stranicu" title="Osvježi"><span aria-hidden="true">↻</span> Osvježi</button>
   <div id="mismo"><label for="obitelj">Mi smo</label><select id="obitelj"></select></div>
 </div></header>
 
@@ -813,6 +818,13 @@ sel.onchange = () => { obiteljId = sel.value; pisi("obitelj", obiteljId); ucitaj
 ucitajObitelj();
 window.addEventListener("hashchange", () => prikazi());
 window.addEventListener("online", () => sinkroniziraj());
+/* Gumb Osvježi (Martina 24.11.): u aplikaciji na početnom zaslonu nema tipke preglednika za osvježavanje.
+   Najprije dohvati stranicu mimo spremljene kopije (GitHub je pamti do 10 min), pa učitaj ponovno; kod, kvačice i dječji način ostaju. */
+$("osvjezi").onclick = async () => {
+  const b = $("osvjezi"); b.classList.add("vrti"); b.disabled = true;
+  try { await fetch(location.pathname, { cache: "reload" }); } catch (e) {}
+  location.reload();
+};
 /* Android/Chrome: ponuda za instalaciju aplikacije (gumb u savjetu na Pregledu) */
 window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); instalacija = e; if ((location.hash || "#pregled") === "#pregled") prikazi(false); });
 window.addEventListener("appinstalled", () => { instalacija = null; prikazi(false); });

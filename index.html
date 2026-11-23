@@ -4,6 +4,27 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0B1626">
+<meta name="description" content="Plan puta 10.–13. prosinca, smještaj, parking, podsjetnik i kutak za djecu – za naših 7 obitelji.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="hr_HR">
+<meta property="og:title" content="Budimpešta advent 2026">
+<meta property="og:description" content="Plan puta 10.–13. prosinca, smještaj, parking, podsjetnik i kutak za djecu – za naših 7 obitelji.">
+<meta property="og:url" content="https://martina130288.github.io/BUDIMPESTA2026/">
+<meta property="og:image" content="https://martina130288.github.io/BUDIMPESTA2026/og.jpg?v=02699726">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Budimpešta advent 2026">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="Budimpešta">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <style>*{box-sizing:border-box}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
 <title>Budimpešta advent 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,13 +54,17 @@
   --rez: #A9C1EE; --rez-bg: #1D2B47; --heart: #F27A90; color-scheme: dark }
 * { box-sizing: border-box; }
 body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.5; }
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--ink); }
+/* Noćni ton (zaglavlje, kartica s odbrojavanjem, ikona aplikacije) – isti u svijetloj i tamnoj temi */
+:root { --noc1: #0B1626; --noc2: #1B3360; --noc-ink: #F4EEDD; --noc-mut: #B9C3D6;
+  --lampice: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='26' viewBox='0 0 300 26'%3E%3Cpath d='M0 4 Q 25 18 50 6 T 100 6 T 150 6 T 200 6 T 250 6 T 300 4' fill='none' stroke='%236F7F99' stroke-width='1.4'/%3E%3Cellipse cx='25' cy='17' rx='4.5' ry='6.5' fill='%23F2C200'/%3E%3Cellipse cx='75' cy='19' rx='4.5' ry='6.5' fill='%23E5484D'/%3E%3Cellipse cx='125' cy='17' rx='4.5' ry='6.5' fill='%232BB673'/%3E%3Cellipse cx='175' cy='19' rx='4.5' ry='6.5' fill='%234EA8DE'/%3E%3Cellipse cx='225' cy='17' rx='4.5' ry='6.5' fill='%23F2C200'/%3E%3Cellipse cx='275' cy='19' rx='4.5' ry='6.5' fill='%23F27A90'/%3E%3C/svg%3E"); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--noc1); }
 a { color: inherit; }
 button, select, textarea, input { font: inherit; color: inherit; }
 :focus-visible { outline: 2px solid var(--tram); outline-offset: 2px; }
 
-header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--ink); color: var(--bg);
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: linear-gradient(160deg, var(--noc1), var(--noc2)); color: var(--noc-ink);
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 10px; }
+header.top::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 26px; background: var(--lampice) repeat-x; pointer-events: none; }
 header.top .in { max-width: 640px; margin: 0 auto; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: space-between; }
 header.top h1 { font-family: var(--f-display); font-weight: 800; font-size: 18px; margin: 0; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px; }
 .linija { background: var(--tram); color: var(--tram-ink); font-size: 12px; font-weight: 800; border-radius: 4px; padding: 1px 6px; letter-spacing: 0.02em; }
@@ -47,7 +72,7 @@ header.top label { font-size: 12px; opacity: .8; margin-right: 6px; }
 header.top select { background: var(--surface); color: var(--ink); border: 0; border-radius: 8px; padding: 6px 8px; font-weight: 600; max-width: 60vw; }
 
 main { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
-  padding-block: 16px calc(96px + env(safe-area-inset-bottom, 0px)); }
+  padding-block: 34px calc(104px + env(safe-area-inset-bottom, 0px)); }
 main > section { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
 h2 { font-family: var(--f-display); font-weight: 800; font-size: 26px; line-height: 1.15; margin: 0; text-wrap: balance; letter-spacing: -0.015em; }
 h3 { font-family: var(--f-display); font-weight: 600; font-size: 18px; margin: 0; text-wrap: balance; }
@@ -55,12 +80,26 @@ h3 { font-family: var(--f-display); font-weight: 600; font-size: 18px; margin: 0
 .mali { font-size: 13px; }
 .oznaka-sekcije { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 
-.blok { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.blok { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; min-width: 0;
+  box-shadow: 0 1px 2px rgba(11,22,38,.05), 0 6px 18px rgba(11,22,38,.05); }
 .kv { display: grid; grid-template-columns: minmax(84px, max-content) 1fr; gap: 4px 12px; margin: 0; }
 .kv dt { color: var(--muted); font-size: 13px; padding-top: 1px; }
 .kv dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
 
-.hero { display: flex; flex-direction: column; gap: 6px; padding-block: 4px 4px; }
+.hero { display: flex; flex-direction: column; gap: 8px; position: relative; overflow: hidden; border-radius: 18px; padding: 16px 14px 14px;
+  color: var(--noc-ink); background:
+    radial-gradient(1.5px 1.5px at 12% 18%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 28% 40%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 47% 12%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 66% 30%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 84% 16%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 93% 42%, #fff 50%, transparent 51%),
+    linear-gradient(175deg, var(--noc1) 0%, var(--noc2) 100%); }
+.hero .oznaka-sekcije { color: var(--noc-mut); }
+.hero .naslov-hero { font-family: var(--f-display); font-weight: 800; font-size: 24px; line-height: 1.1; margin: 0; letter-spacing: -0.015em; }
+.hero .grad { display: block; width: 100%; height: 64px; margin: -4px 0 -2px; }
+.hero .sat > div { background: rgba(255,255,255,.08); color: var(--noc-ink); border: 1px solid rgba(255,255,255,.12); }
+.hero .sat > .sek { background: var(--tram); color: var(--tram-ink); border-color: var(--tram); }
+.hero .mali.mut { color: var(--noc-mut); }
+.app-savjet .redak { align-items: center; }
+.app-savjet ol { margin: 0; padding-left: 20px; font-size: 14px; display: flex; flex-direction: column; gap: 2px; }
 .odbrojavanje { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
 .sat { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 2px; }
 .sat > div { background: var(--ink); color: var(--bg); border-radius: 12px; padding: 10px 2px 8px; display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 0; }
@@ -219,8 +258,9 @@ nav.tabovi { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; backgrou
   padding-left: max(8px, env(safe-area-inset-left, 0px)); padding-right: max(8px, env(safe-area-inset-right, 0px)); padding-bottom: env(safe-area-inset-bottom, 0px); }
 nav.tabovi .in { max-width: 640px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); }
 nav.tabovi a { text-decoration: none; text-align: center; padding: 10px 2px 12px; font-size: 12.5px; min-width: 0; overflow-wrap: anywhere; font-weight: 500; color: var(--muted); border-top: 3px solid transparent; }
-nav.tabovi a[aria-current="page"] { color: var(--ink); border-top-color: var(--tram); font-weight: 600; }
-nav.tabovi a .ik { display: block; font-size: 18px; line-height: 1.2; }
+nav.tabovi a[aria-current="page"] { color: var(--ink); font-weight: 700; }
+nav.tabovi a .ik { display: block; width: fit-content; margin: 0 auto 2px; padding: 1px 14px; border-radius: 999px; font-size: 18px; line-height: 1.25; transition: background .2s; }
+nav.tabovi a[aria-current="page"] .ik { background: var(--tram); color: var(--tram-ink); }
 .toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(96px + env(safe-area-inset-bottom, 0px)); background: var(--ink); color: var(--bg); padding: 8px 14px; border-radius: 10px; font-size: 14px; z-index: 7; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 </style>
@@ -388,6 +428,20 @@ const mapa = q => "https://www.google.com/maps/search/?api=1&query=" + encodeURI
 function toast(t) { const el = $("toast"); el.textContent = t; el.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => el.hidden = true, 2600); }
 
 /* ---------- Pregled ---------- */
+let instalacija = null;
+const kaoAplikacija = () => (window.matchMedia && matchMedia("(display-mode: standalone)").matches) || navigator.standalone === true;
+/* Silueta grada u noćnoj kartici: Parlament s kupolom i tornjevima, osvijetljeni prozori, Dunav */
+const GRAD_SVG = (() => {
+  let s = `<svg class="grad" viewBox="0 0 360 64" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><g fill="#2A4677">`;
+  s += `<rect x="36" y="40" width="288" height="20"/><rect x="60" y="32" width="88" height="10"/><rect x="212" y="32" width="88" height="10"/>`;
+  for (let x = 40; x <= 316; x += 12) if (x < 150 || x > 210) s += `<polygon points="${x},40 ${x + 4},31 ${x + 8},40"/>`;
+  s += `<rect x="112" y="18" width="12" height="22"/><polygon points="110,18 118,4 126,18"/><rect x="236" y="18" width="12" height="22"/><polygon points="234,18 242,4 250,18"/>`;
+  s += `<path d="M150 42 Q150 14 180 12 Q210 14 210 42 Z"/><rect x="176" y="6" width="8" height="8"/><polygon points="174,6 180,0 186,6"/></g>`;
+  s += `<g fill="#F2C200" opacity=".85">`;
+  for (let x = 44; x <= 316; x += 10) if (x < 152 || x > 206) s += `<rect x="${x}" y="47" width="3" height="4" rx=".5"/>`;
+  s += `<rect x="178" y="26" width="4" height="6" rx="1"/></g><rect x="0" y="60" width="360" height="4" fill="#3B5C94" opacity=".6"/></svg>`;
+  return s;
+})();
 /* Sat koji otkucava do polaska (Martina 23.11.) */
 const mn = (n, f) => f[n % 10 === 1 && n % 100 !== 11 ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : 2];
 function satHtml() {
@@ -452,7 +506,7 @@ function pregled() {
   const o = ob();
   const pk = o ? D.parking[o.parking] : null;
   // Redoslijed (Martina 23.11.): odabir obitelji (traka na vrhu), sat do polaska, Zagreb, fakultativne aktivnosti
-  let h = `<div class="hero"><span class="oznaka-sekcije">10.–13. prosinca 2026. · 7 obitelji · 23 putnika</span>`;
+  let h = `<div class="hero"><span class="oznaka-sekcije">10.–13. prosinca · 7 obitelji · 23 putnika</span><p class="naslov-hero">Advent u Budimpešti</p>${GRAD_SVG}`;
   h += new Date() < new Date(D.polazak) ? `<div class="sat" id="sat" role="timer" aria-label="Vrijeme do polaska">${satHtml()}</div><span class="mali mut">do polaska iz Solina · četvrtak 10.12. u 16:00</span>`
     : (new Date() < new Date(D.povratak) ? `<h2>Sretan put!</h2>` : `<h2>Hvala svima na putovanju!</h2>`);
   h += `</div>`;
@@ -480,8 +534,14 @@ function pregled() {
   h += `<div class="blok" id="parking"><h3>Parking u Budimpešti</h3><p class="mali" style="margin:0">Parking plaća svaki vozač sam. Kombi može samo na Astoriju.</p>${["astoria", "regus"].map(k => { const p = D.parking[k]; return `<div class="park"><b>${esc(p.naziv)}</b><span class="mut mali">${esc(p.adresa)}</span><span class="nap">${esc(p.opis)}</span><ol>${p.koraci.map(x => `<li>${esc(x)}</li>`).join("")}</ol><a class="btn" href="${esc(p.link)}" target="_blank" rel="noopener" style="align-self:flex-start">${k === "astoria" ? "Rezerviraj Astoriju ↗" : "Regus na karti ↗"}</a></div>`; }).join("")}</div>`;
   h += `<div class="blok"><h3>The Magic, subota u 13:00</h3><p style="margin:0" class="nap">Restoran u stilu Harryja Pottera, stol za 10 djece i 3 odrasla. Djeca biraju jelo do 7.12. (<a href="#podsjetnik">Podsjetnik</a>).</p></div>`;
   h += `<div class="blok"><h3>Na štandovima</h3><ul class="hrana">${D.hrana.map(([nz, c, d]) => `<li><span>${esc(nz)}${d ? ' <span class="zn djeca">djeca vole</span>' : ""}</span><span>${esc(c)}${uEur(c) ? `<br><b class="eur">${uEur(c)}</b>` : ""}</span></li>`).join("")}</ul><span class="mut mali">Cijene iz 2025. Iznosi u eurima su preračunati: 1 € ≈ ${TECAJ} HUF. Na Vörösmarty tér samo kartica.</span></div>`;
+  if (!kaoAplikacija()) h += `<details class="blok app-savjet"><summary>📲 Spremite stranicu kao aplikaciju</summary>
+    <p class="mali" style="margin:0">Ikona „Budimpešta” bit će na početnom zaslonu, a stranica se otvara preko cijelog ekrana, bez traka preglednika.</p>
+    ${instalacija ? `<button class="btn glavni" id="instaliraj" type="button" style="align-self:flex-start">Instaliraj aplikaciju</button>` : ""}
+    <b class="mali">iPhone (Safari)</b><ol><li>Dolje tipka Dijeli (kvadrat sa strelicom gore).</li><li>„Dodaj na početni zaslon”, pa „Dodaj”.</li></ol>
+    <b class="mali">Android (Chrome)</b><ol><li>Gore desno ⋮.</li><li>„Dodaj na početni zaslon” ili „Instaliraj aplikaciju”.</li></ol></details>`;
   h += `<p class="mut mali" style="margin:0">Ažurirano ${esc(D.azurirano)}. Plan i rokovi mogu se još mijenjati.</p>`;
   $("v-pregled").innerHTML = h;
+  if ($("instaliraj")) $("instaliraj").onclick = async () => { const e = instalacija; instalacija = null; e.prompt(); try { await e.userChoice; } catch (_) {} prikazi(false); };
   $("v-pregled").querySelectorAll("[data-zg]").forEach(b => b.onclick = () => {
     if (!obiteljId) { toast("Najprije odaberite obitelj gore desno"); return; }
     if (!smijem()) return;
@@ -742,6 +802,9 @@ sel.onchange = () => { obiteljId = sel.value; pisi("obitelj", obiteljId); ucitaj
 ucitajObitelj();
 window.addEventListener("hashchange", () => prikazi());
 window.addEventListener("online", () => sinkroniziraj());
+/* Android/Chrome: ponuda za instalaciju aplikacije (gumb u savjetu na Pregledu) */
+window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); instalacija = e; if ((location.hash || "#pregled") === "#pregled") prikazi(false); });
+window.addEventListener("appinstalled", () => { instalacija = null; prikazi(false); });
 prikazi();
 ucitajServer();
 sinkroniziraj();

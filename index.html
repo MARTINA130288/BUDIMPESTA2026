@@ -231,6 +231,13 @@ body.zakljucano nav.tabovi, body.zakljucano #mismo, body.zakljucano .kodtraka { 
 .dj-forma { display: flex; flex-direction: column; gap: 6px; }
 .dj-roditelji summary { font-size: 14px; }
 .dj-roditelji .kod-unos input { background: var(--bg); border: 1px solid var(--line); }
+.kutak.sat-djeca { background: radial-gradient(circle at 92% 20%, rgba(255,255,255,.22) 0 16px, transparent 17px),
+  radial-gradient(circle at 5% 90%, rgba(255,255,255,.16) 0 22px, transparent 23px),
+  linear-gradient(135deg, #FF7A59 0%, #F2C200 100%); color: #3A2A00; }
+.kutak.sat-djeca h3 { color: #3A2A00; }
+.kutak.sat-djeca .kutak-zn { background: #fff; color: #3A2A00; }
+.kutak.sat-djeca .sat > div { background: #fff; color: #23164D; box-shadow: 0 4px 0 rgba(0,0,0,.12); }
+.kutak.sat-djeca .sat > .sek { background: #6C4DF6; color: #fff; }
 .kutak.kviz { background: radial-gradient(circle at 90% 85%, rgba(255,255,255,.2) 0 22px, transparent 23px),
   radial-gradient(circle at 6% 10%, rgba(255,255,255,.18) 0 16px, transparent 17px),
   linear-gradient(135deg, #0F9D8A 0%, #2F7BE5 60%, #6C4DF6 100%); }
@@ -372,6 +379,8 @@ async function sinkroniziraj(dodatno) {
 }
 function kodTraka() {
   const el = $("kodtraka");
+  // Kutak za djecu ne treba obitelj ni kod (Martina 24.11.): tu nema okvira za odabir obitelji
+  if ((location.hash || "").slice(1) === "djeca") { el.innerHTML = ""; $("obitelj").classList.remove("istakni"); return; }
   $("obitelj").classList.toggle("istakni", !obiteljId);
   if (!obiteljId) {
     el.innerHTML = `<div class="odabir-obitelji"><b>Najprije odaberite svoju obitelj</b><span class="mali">Oznaka obitelji su početna slova vaših imena. Tada vidite svoj apartman, cijenu, parking i podsjetnik.</span>
@@ -451,9 +460,9 @@ function satHtml() {
   return v.map(([n, f], i) => `<div${i === 3 ? ' class="sek"' : ""}><b>${i ? String(n).padStart(2, "0") : n}</b><span>${mn(n, f)}</span></div>`).join("");
 }
 setInterval(() => {
-  const el = document.getElementById("sat"); if (!el) return;
+  const satovi = document.querySelectorAll("[data-sat]"); if (!satovi.length) return;
   if (new Date(D.polazak) <= new Date()) { prikazi(false); return; }
-  el.innerHTML = satHtml();
+  const h = satHtml(); satovi.forEach(el => { el.innerHTML = h; });
 }, 1000);
 /* HUF → EUR za cijene na štandovima („2.800–4.900 HUF” → „≈ 7,20–12,60 €”), zaokruženo na 10 centi */
 const TECAJ = 390;
@@ -507,7 +516,7 @@ function pregled() {
   const pk = o ? D.parking[o.parking] : null;
   // Redoslijed (Martina 23.11.): odabir obitelji (traka na vrhu), sat do polaska, Zagreb, fakultativne aktivnosti
   let h = `<div class="hero"><span class="oznaka-sekcije">10.–13. prosinca · 7 obitelji · 23 putnika</span><p class="naslov-hero">Advent u Budimpešti</p>${GRAD_SVG}`;
-  h += new Date() < new Date(D.polazak) ? `<div class="sat" id="sat" role="timer" aria-label="Vrijeme do polaska">${satHtml()}</div><span class="mali mut">do polaska iz Solina · četvrtak 10.12. u 16:00</span>`
+  h += new Date() < new Date(D.polazak) ? `<div class="sat" data-sat role="timer" aria-label="Vrijeme do polaska">${satHtml()}</div><span class="mali mut">do polaska iz Solina · četvrtak 10.12. u 16:00</span>`
     : (new Date() < new Date(D.povratak) ? `<h2>Sretan put!</h2>` : `<h2>Hvala svima na putovanju!</h2>`);
   h += `</div>`;
   const zg = D.zagreb, zi2 = izbori.zagreb_nocenje || "";
@@ -757,6 +766,8 @@ function djecjiNacinVezi() {
 function djeca() {
   let h = djecjiPin ? djecjiNacinHtml() : "";
   h += `<h2>🎈 Kutak za djecu</h2><p class="mut" style="margin:0">Zanimljivosti o Budimpešti, mjesta koja nas zovu (slike i videi) i mali kviz – za put u autu ili večer prije polaska.</p>`;
+  if (new Date() < new Date(D.polazak)) h += `<div class="kutak sat-djeca"><div class="kutak-vrh"><h3>⏰ Još toliko do Budimpešte!</h3><span class="kutak-zn">🚗 čet 10.12. u 16 h</span></div>
+    <div class="sat" data-sat role="timer" aria-label="Vrijeme do polaska">${satHtml()}</div></div>`;
   if (!djecjiPin) h += djecjiNacinHtml();
   h += `<div class="kutak"><div class="kutak-vrh"><h3>Znaš li?</h3><span class="kutak-zn">💡 ${D.znas_li.length} zanimljivosti</span></div>
     <div class="kutak-kartica" id="znas" aria-live="polite">${zanimljivost(znasI)}</div>

@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<style>*{box-sizing:border-box}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<title>Budimpešta advent 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: jedna kolona za mobitel, ljepljivo zaglavlje s izborom obitelji, donja traka s četiri kartice; vremena kao vozni red, žuta kao budimpeštanski tramvaj */
+:root {
+  --bg: #F2F4F8; --surface: #FFFFFF; --ink: #15233B; --muted: #5A6476; --line: #DAE0E8;
+  --tram: #F2C200; --tram-ink: #2E2500;
+  --kids: #0B7369; --kids-bg: #DFF2EF;
+  --fak: #A2500A; --fak-bg: #FBEAD8;
+  --rez: #2C4A7A; --rez-bg: #E3EAF6;
+  --heart: #C2334D;
+  --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0D1421; --surface: #162033; --ink: #E7EBF2; --muted: #9AA4B7; --line: #283449;
+  --tram: #F2C200; --tram-ink: #241D00;
+  --kids: #63CFC3; --kids-bg: #10302D; --fak: #F2A866; --fak-bg: #3A2512;
+  --rez: #A9C1EE; --rez-bg: #1D2B47; --heart: #F27A90; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0D1421; --surface: #162033; --ink: #E7EBF2; --muted: #9AA4B7; --line: #283449;
+  --tram: #F2C200; --tram-ink: #241D00;
+  --kids: #63CFC3; --kids-bg: #10302D; --fak: #F2A866; --fak-bg: #3A2512;
+  --rez: #A9C1EE; --rez-bg: #1D2B47; --heart: #F27A90; color-scheme: dark }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.5; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--ink); }
+a { color: inherit; }
+button, select, textarea, input { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--tram); outline-offset: 2px; }
+
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--ink); color: var(--bg);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 10px; }
+header.top .in { max-width: 640px; margin: 0 auto; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: space-between; }
+header.top h1 { font-family: var(--f-display); font-weight: 800; font-size: 18px; margin: 0; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px; }
+.linija { background: var(--tram); color: var(--tram-ink); font-size: 12px; font-weight: 800; border-radius: 4px; padding: 1px 6px; letter-spacing: 0.02em; }
+header.top label { font-size: 12px; opacity: .8; margin-right: 6px; }
+header.top select { background: var(--surface); color: var(--ink); border: 0; border-radius: 8px; padding: 6px 8px; font-weight: 600; max-width: 60vw; }
+
+main { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 16px calc(96px + env(safe-area-inset-bottom, 0px)); }
+main > section { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+h2 { font-family: var(--f-display); font-weight: 800; font-size: 26px; line-height: 1.15; margin: 0; text-wrap: balance; letter-spacing: -0.015em; }
+h3 { font-family: var(--f-display); font-weight: 600; font-size: 18px; margin: 0; text-wrap: balance; }
+.mut { color: var(--muted); }
+.mali { font-size: 13px; }
+.oznaka-sekcije { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+.blok { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.kv { display: grid; grid-template-columns: minmax(84px, max-content) 1fr; gap: 4px 12px; margin: 0; }
+.kv dt { color: var(--muted); font-size: 13px; padding-top: 1px; }
+.kv dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+
+.hero { display: flex; flex-direction: column; gap: 6px; padding-block: 4px 4px; }
+.odbrojavanje { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.odbrojavanje b { font-family: var(--f-display); font-weight: 800; font-size: 56px; line-height: 1; font-variant-numeric: tabular-nums; }
+.rok { background: var(--tram); color: var(--tram-ink); border-radius: 12px; padding: 12px 16px; display: flex; flex-direction: column; gap: 6px; }
+.rok b { font-family: var(--f-display); font-size: 17px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; border-radius: 10px; padding: 10px 14px; font-weight: 600; border: 1px solid var(--line); background: var(--surface); cursor: pointer; text-decoration: none; }
+.btn.glavni { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.rok .btn { align-self: flex-start; background: var(--tram-ink); color: var(--tram); border: 0; }
+.redak { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* Plan */
+.dani { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.dan-btn { border: 1px solid var(--line); background: var(--surface); border-radius: 10px; padding: 8px 4px; cursor: pointer; display: flex; flex-direction: column; align-items: center; line-height: 1.2; }
+.dan-btn small { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.dan-btn[aria-pressed="true"] { background: var(--tram); color: var(--tram-ink); border-color: var(--tram); }
+.dan-btn[aria-pressed="true"] small { color: var(--tram-ink); }
+.filteri { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 5px 12px; font-size: 13px; font-weight: 500; cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.vozni-red { display: flex; flex-direction: column; gap: 0; }
+.stavka { display: grid; grid-template-columns: 74px 1fr; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
+.stavka:first-child { border-top: 0; }
+.vrijeme { font-variant-numeric: tabular-nums; font-weight: 600; font-size: 13px; line-height: 1.3; padding-top: 2px; overflow-wrap: anywhere; }
+.vrijeme.prazno { color: var(--muted); font-weight: 400; }
+.sadrzaj { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.naslov-red { display: flex; align-items: flex-start; gap: 8px; justify-content: space-between; }
+.naslov-red h3 { font-size: 16px; }
+.gdje { font-size: 13px; color: var(--muted); }
+.gdje a { color: var(--muted); }
+.nap { font-size: 14px; }
+.znacke { display: flex; gap: 6px; flex-wrap: wrap; }
+.zn { font-size: 12px; font-weight: 600; border-radius: 6px; padding: 1px 7px; }
+.zn.djeca { background: var(--kids-bg); color: var(--kids); }
+.zn.fak { background: var(--fak-bg); color: var(--fak); }
+.zn.rez { background: var(--rez-bg); color: var(--rez); }
+.srce { border: 0; background: none; cursor: pointer; font-size: 20px; line-height: 1; padding: 2px 4px; color: var(--muted); flex: none; }
+.srce[aria-pressed="true"] { color: var(--heart); }
+.blok.zagreb { border: 2px solid var(--tram); }
+.prijedlog { display: flex; flex-direction: column; gap: 2px; background: var(--fak-bg); color: var(--ink); border-left: 4px solid var(--fak); border-radius: 8px; padding: 10px 12px; }
+.prijedlog b { color: var(--fak); }
+.iznos { display: flex; flex-direction: column; gap: 2px; background: var(--bg); border-radius: 10px; padding: 10px 12px; }
+.iznos b { font-family: var(--f-display); font-size: 28px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.izbor.dva { grid-template-columns: 1fr 1fr; }
+.izbor.dva button { font-size: 14px; padding: 10px 6px; }
+.park { display: flex; flex-direction: column; gap: 6px; padding-top: 12px; border-top: 1px solid var(--line); }
+.park ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; font-size: 14px; }
+.srce .broj { font-size: 12px; font-weight: 600; margin-left: 2px; vertical-align: middle; }
+details.blok summary { cursor: pointer; font-weight: 600; }
+.cijena { font-size: 13px; color: var(--fak); }
+.izbor { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+.izbor button { border: 1px solid var(--line); background: var(--bg); border-radius: 8px; padding: 6px 2px; font-size: 12.5px; cursor: pointer; line-height: 1.2; }
+.izbor button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); font-weight: 600; }
+.glasovi { font-size: 13px; color: var(--muted); }
+.savjet { border-left: 3px solid var(--tram); padding: 4px 0 4px 12px; font-size: 14px; }
+.prazno-stanje { color: var(--muted); padding: 16px 0; }
+
+/* Podsjetnik */
+.napredak { height: 8px; background: var(--line); border-radius: 99px; overflow: hidden; }
+.napredak { display: flex; }
+.napredak i { display: block; height: 100%; background: var(--kids); width: 0; transition: width .3s; }
+.napredak i.ceka-traka { background: var(--fak); opacity: .55; }
+.zadaci { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.zadaci li { display: grid; grid-template-columns: 28px 1fr auto; gap: 10px; padding: 12px 0; border-top: 1px solid var(--line); align-items: start; }
+.zadaci li:first-child { border-top: 0; }
+.zadaci input { width: 22px; height: 22px; margin: 1px 0 0; accent-color: var(--kids); }
+.zadaci label { cursor: pointer; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.zadaci li.gotovo label > span:first-child { text-decoration: line-through; color: var(--muted); }
+.zadaci .dok { font-size: 12px; font-variant-numeric: tabular-nums; color: var(--muted); white-space: nowrap; padding-top: 2px; }
+.zadaci .info { font-size: 13px; color: var(--muted); }
+
+/* Kod obitelji i stanje slanja (Google tablica) */
+.kodtraka { max-width: 640px; margin: 0 auto 16px; }
+.kodtraka:empty { display: none; }
+.kod-unos { display: flex; gap: 8px; flex-wrap: wrap; }
+.kod-unos input { font-weight: 600; letter-spacing: .15em; text-transform: uppercase; width: 9em; border: 0; border-radius: 10px; padding: 9px 12px; background: var(--surface); color: var(--ink); }
+.stanje-slanja { font-size: 13px; color: var(--muted); display: flex; gap: 8px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.stanje-slanja.greska { color: var(--fak); font-weight: 600; }
+.stanje-slanja .btn { padding: 4px 10px; font-size: 13px; }
+
+/* Javi se */
+.sazetak { white-space: pre-wrap; font-size: 14px; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px; overflow-wrap: anywhere; }
+textarea { width: 100%; min-height: 96px; border: 1px solid var(--line); border-radius: 10px; padding: 10px; background: var(--surface); resize: vertical; }
+
+.hrana { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.hrana li { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; }
+.hrana span:last-child { color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+nav.tabovi { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; background: var(--surface); border-top: 1px solid var(--line);
+  padding-left: max(8px, env(safe-area-inset-left, 0px)); padding-right: max(8px, env(safe-area-inset-right, 0px)); padding-bottom: env(safe-area-inset-bottom, 0px); }
+nav.tabovi .in { max-width: 640px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
+nav.tabovi a { text-decoration: none; text-align: center; padding: 10px 2px 12px; font-size: 13px; font-weight: 500; color: var(--muted); border-top: 3px solid transparent; }
+nav.tabovi a[aria-current="page"] { color: var(--ink); border-top-color: var(--tram); font-weight: 600; }
+nav.tabovi a .ik { display: block; font-size: 18px; line-height: 1.2; }
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(80px + env(safe-area-inset-bottom, 0px)); background: var(--ink); color: var(--bg); padding: 8px 14px; border-radius: 10px; font-size: 14px; z-index: 7; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<header class="top"><div class="in">
+  <h1><span class="linija">BP</span> Budimpešta advent</h1>
+  <div><label for="obitelj">Mi smo</label><select id="obitelj"></select></div>
+</div></header>
+
+<main>
+  <div class="kodtraka" id="kodtraka" aria-live="polite"></div>
+  <section id="v-pregled"></section>
+  <section id="v-plan" hidden></section>
+  <section id="v-podsjetnik" hidden></section>
+  <section id="v-javi" hidden></section>
+</main>
+
+<nav class="tabovi" aria-label="Kartice"><div class="in">
+  <a href="#pregled" data-v="pregled"><span class="ik" aria-hidden="true">⌂</span>Pregled</a>
+  <a href="#plan" data-v="plan"><span class="ik" aria-hidden="true">☰</span>Plan</a>
+  <a href="#podsjetnik" data-v="podsjetnik"><span class="ik" aria-hidden="true">✓</span>Podsjetnik</a>
+  <a href="#javi" data-v="javi"><span class="ik" aria-hidden="true">✉</span>Javi se</a>
+</div></nav>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const D = {"_opis": "Stranica za obitelji (22.11.2026.), javna na GitHub Pagesu: obitelji samo kao inicijali imena (Putnici), bez prezimena, dobi, kreveta, imena vozača i linka na kartu s cijenama (Martina 22.11.). Pregled, plan po itineraru v4, podsjetnik i 'Javi se'. Kvačice i odabiri idu Martini na potvrdu (Google tablica preko 'skripta', inače WhatsApp). Generator: python tools/obitelji_stranica.py [--github]", "azurirano": "23.11.2026.", "polazak": "2026-12-10T16:00:00+01:00", "povratak": "2026-12-13T21:30:00+01:00", "obitelji": [{"id": "smln", "ime": "S·M·L·N", "jedinica": "Superior Apartment R (desni), 1. kat", "upute": "https://linktr.ee/Superior_Apartment_Right", "vozilo": "svoj auto", "parking": "astoria", "vinjeta": "D1", "parking_stanje": "rezervirano"}, {"id": "nimm", "ime": "N·I·M·M", "jedinica": "Superior Apartment L (lijevi), 1. kat", "upute": "https://linktr.ee/Superior_Apartment_Left", "vozilo": "svoj auto", "parking": "izbor", "vinjeta": "D1"}, {"id": "ajk", "ime": "A·J·K", "jedinica": "Room 12, prizemlje (zajednička kuhinja s Room 11 i 13)", "upute": "https://linktr.ee/Deluxe_Family_Room_12", "vozilo": "kombi", "parking": "astoria", "vinjeta": "D2", "parking_stanje": "rezervira se"}, {"id": "bp", "ime": "B·P", "jedinica": "Room 11, prizemlje (zajednička kuhinja s Room 12 i 13)", "upute": "https://linktr.ee/Deluxe_Double_Room_11", "vozilo": "kombi", "parking": "astoria", "vinjeta": "D2", "parking_stanje": "rezervira se"}, {"id": "gkdn", "ime": "G·K·D·N", "jedinica": "Apartment Big, 1. kat", "upute": "https://linktr.ee/Deluxe_Apartment_Big", "vozilo": "svoj auto", "parking": "izbor", "vinjeta": "D1"}, {"id": "dp", "ime": "D·P", "jedinica": "Room 13, prizemlje (zajednička kuhinja s Room 11 i 12)", "upute": "https://linktr.ee/Deluxe_Family_Suite_13", "vozilo": "kombi", "parking": "astoria", "vinjeta": "D2", "parking_stanje": "rezervira se"}, {"id": "dmtm", "ime": "D·M·T·M", "jedinica": "Apartment Small, 1. kat", "upute": "https://linktr.ee/Deluxe_Studio_Small", "vozilo": "svoj auto", "parking": "izbor", "vinjeta": "D1"}], "_potvrde": "Ručne potvrde (obitelj → id stavke podsjetnika → datum); uz Google tablicu stižu i iz nje (Potvrđeno = DA).", "potvrde": {"smln": {"vinjeta": "22.11.", "enc": "22.11.", "parking": "22.11."}}, "parking": {"astoria": {"naziv": "Opcija 1 – Budapest Car Park Astoria", "kratko": "Astoria (opcija 1)", "adresa": "Szép utca, 1053 Budapest – ista ulica kao Golden Star", "link": "https://budapestcarpark.com/park/bp-astoria", "opis": "Otvoreno parkiralište, 0–24, može se ulaziti i izlaziti. Oko 24 € po danu (naplaćuje se po 24 h). Mjesto je rezervirano, besplatno otkazivanje. Ovdje parkira i obitelj S·M·L·N. Prima i kombi.", "koraci": ["Otvorite stranicu budapestcarpark.com/park/bp-astoria (gumb ispod).", "Start date: petak 11.12. u 14:00 (ako stignete kasnije, nije problem). End date: nedjelja 13.12., vrijeme kad odlazite s parkinga (cijena se računa po 24 h). Spots: 1.", "Kliknite „Book”, upišite podatke koje traži i platite karticom online. Cijena za cijelo razdoblje vidi se prije plaćanja (danas oko 24 € po danu, za naše dane oko 48 €).", "Na e-mail stižu upute kako ući na parkiralište. Spremite ih na mobitel.", "Rezervaciju se može besplatno otkazati. Samo online – na licu mjesta se ne može platiti."]}, "regus": {"naziv": "Opcija 2 – garaža Regus", "kratko": "Regus (opcija 2)", "adresa": "Reáltanoda u. 8, 50 m od Golden Stara", "link": "https://www.google.com/maps/search/?api=1&query=Re%C3%A1ltanoda%20utca%208%2C%20Budapest", "opis": "Garaža bez rezervacije, 10.000 HUF (≈ 26 €) za 24 h. Vozila najviše 1,90 m – kombi ne stane.", "koraci": ["Ne rezervira se – dođete i parkirate, ako ima mjesta (mjesto nije zajamčeno).", "Ulaz je u Reáltanoda utci, 50 m od Golden Stara. Visina vozila najviše 1,90 m.", "Plaća se na licu mjesta, 10.000 HUF za 24 h. Kako točno (listić, automat, kartica) piše na ulazu – unaprijed to nismo mogli provjeriti.", "Ako je garaža puna: Astoria (opcija 1) se može rezervirati i u zadnji čas, s mobitela."]}}, "dani": [{"id": "cet", "kratko": "Čet", "datum": "10.12.", "naziv": "Četvrtak 10.12.", "tema": "Put do Zagreba – za one koji idu preko Zagreba", "stavke": [{"t": "16:00", "sto": "Polazak iz Solina", "gdje": "A1, ulaz Dugopolje", "nap": "Osobne iskaznice i EKZO kartice svih putnika, i djece.", "ozn": ["auto"]}, {"t": "~18:00", "sto": "Pauza i večera", "gdje": "odmorište na A1 u Lici", "nap": "30–40 minuta. Ili sendviči iz kuće, pa je pauza kraća."}, {"t": "~20:00", "sto": "Dolazak i prijava", "gdje": "CASA V BENCUN, Kriška 1, Zagreb", "mapa": "Kriška 1, Zagreb", "nap": "Besplatan parking u objektu. Recepcija radi do ponoći."}, {"t": "20:45–22:30", "sto": "Advent u Zagrebu", "gdje": "Trg bana Jelačića, Zrinjevac, Europski trg", "mapa": "Zrinjevac, Zagreb", "nap": "Po želji, kratko, jer sutra rano krećemo. Oko 4 km od smještaja, 10–15 min autom ili taksijem.", "akt": "zagreb"}, {"t": "~23:00", "sto": "Spavanje", "gdje": "smještaj", "nap": "Sutra polazak u 8 h."}], "savjet": "Noćenje u Zagrebu ovisi o vašoj odluci: javite Martini do 29.11. idete li preko Zagreba (besplatno otkazivanje je samo do 7.12.)."}, {"id": "pet", "kratko": "Pet", "datum": "11.12.", "naziv": "Petak 11.12.", "tema": "Morski psi na putu i prvi sjaj adventa", "stavke": [{"t": "07:15–07:50", "sto": "Doručak na brzinu i odjava", "gdje": "CASA V BENCUN", "nap": "Doručak nije u cijeni: pekara ili sendviči."}, {"t": "08:00", "sto": "Polazak iz Zagreba", "gdje": "A3 → A4 → Goričan", "nap": "Oko 330 km do Campone. Pauza oko 10:15 uz M7 (Balaton).", "ozn": ["auto"]}, {"t": "~11:30", "sto": "Dolazak u Camponu", "gdje": "Nagytétényi út 37–43, Budimpešta", "mapa": "Campona Budapest", "nap": "Besplatan parking pred centrom.", "ozn": ["auto"]}, {"t": "11:30–13:00", "sto": "Tropicarium", "gdje": "u Camponi", "mapa": "Tropicarium Budapest", "nap": "Morski psi, tunel ispod akvarija, prašuma s majmunima i pticama. Hranjenje majmuna obično 11:30–12:00. Karte na blagajni (online su skuplje). Tko ne ide: igraonica i trgovine u Camponi.", "ozn": ["fak", "djeca"], "akt": "tropicarium"}, {"t": "13:00–14:00", "sto": "Ručak u hodu", "gdje": "food court u Camponi", "nap": "Bez rezervacije. Djeca biraju sama.", "ozn": ["hrana"]}, {"t": "14:00–15:00", "sto": "Vožnja do smještaja i parkiranje", "gdje": "Szép utca", "nap": "Oko 15 km, petkom poslijepodne 30–45 min. Parking: opcija 1 Astoria u našoj ulici (rezervacija online), opcija 2 garaža Regus (50 m, bez rezervacije, kombi ne stane). Upute na kartici Pregled.", "ozn": ["auto"]}, {"t": "15:00–16:45", "sto": "Prijava u Golden Star i odmor", "gdje": "Szép utca 5", "mapa": "Szép utca 5, Budapest", "nap": "Kodove za ulaz Martina prosljeđuje na dan dolaska. Jedinice možda nisu spremne točno u 15 h, a prtljaga se može ostaviti."}, {"t": "17:15–17:45", "sto": "Kava u Párisi Udvaru", "gdje": "Ferenciek tere 10, 2 min pješice", "mapa": "Párisi Udvar Budapest", "nap": "Raskošni prolaz iz 1913. sa staklenom kupolom. Djeci vruća čokolada. Okupljanje cijele grupe."}, {"t": "17:45–19:00", "sto": "Cinema Mystica", "gdje": "u istoj zgradi (Párisi Udvar)", "mapa": "Cinema Mystica Budapest", "nap": "23 instalacije svjetla, zvuka i projekcija u 10 prostorija, 60–90 min. Tko ne ide: šetnja Váci utcom prema Vörösmarty tér.", "ozn": ["fak", "djeca"], "akt": "mystica"}, {"t": "19:15–20:00", "sto": "Vörösmarty tér, najveći sajam u gradu", "gdje": "10 min pješice", "mapa": "Vörösmarty tér Budapest", "nap": "Oko 150 štandova. Mini vlakić za djecu vozi do 20 h, pa ga uhvatiti odmah. Plaća se samo karticom.", "ozn": ["djeca"]}, {"t": "20:00–21:00", "sto": "Advent Bazilika i večera na štandovima", "gdje": "Szent István tér, 10 min pješice", "mapa": "Szent István tér Budapest", "nap": "Projekcija na pročelju svakih pola sata od 17:30. Mini klizalište besplatno za djecu do 14 godina. Gulaš u kruhu, lángos, kürtőskalács. Karticom i gotovinom.", "ozn": ["djeca", "hrana"]}, {"t": "~21:15", "sto": "Povratak", "gdje": "pješice, oko 15 min", "nap": ""}], "savjet": "Ako kasnimo s puta, Tropicarium se skrati na sat vremena ili preskoči. Večernji program počinje tek u 17:15."}, {"id": "sub", "kratko": "Sub", "datum": "12.12.", "naziv": "Subota 12.12.", "tema": "Budim, Dunav i advent", "stavke": [{"t": "08:00–09:30", "sto": "Doručak", "gdje": "smještaj ili pekara", "nap": "Golden Star nema doručak.", "ozn": ["hrana"]}, {"t": "09:30–10:15", "sto": "Na Budim", "gdje": "pješice do Deák téra, pa autobus 16", "nap": "Subota je u Mađarskoj radni dan, pa smo cijeli dan bez auta. Jedna vožnja 500 HUF (aplikacija BudapestGO), za svakoga od 6 godina."}, {"t": "10:15–11:15", "sto": "Ribarska utvrda i Matijaševa crkva", "gdje": "Szentháromság tér", "mapa": "Halászbástya Budapest", "nap": "Bijele kule s pogledom na Parlament i mali adventski sajam. Donja terasa je besplatna."}, {"t": "", "sto": "Gornja terasa Ribarske utvrde", "gdje": "Ribarska utvrda", "nap": "Po želji.", "ozn": ["fak"], "akt": "terasa"}, {"t": "11:15–12:00", "sto": "Budimski dvorac", "gdje": "10 min šetnje kroz Stari grad", "mapa": "Budavári Palota", "nap": "Terasa s pogledom na Dunav, kip ptice Turul i Matijaševa fontana. Besplatno."}, {"t": "12:00–12:30", "sto": "Lančani most", "gdje": "Clark Ádám tér → Széchenyi tér", "mapa": "Széchenyi Lánchíd", "nap": "Djeca vole kamene lavove na ulazu na most.", "ozn": ["djeca"]}, {"t": "", "sto": "Uspinjača Sikló (dolje)", "gdje": "Clark Ádám tér", "mapa": "Budavári Sikló", "nap": "Po želji, umjesto silaska pješice. Vozi od 1870.", "ozn": ["fak", "djeca"], "akt": "siklo"}, {"t": "13:00–14:15", "sto": "Ručak u The Magic", "gdje": "Hajós u. 25, iza Opere", "mapa": "The Magic restaurant Hajós utca 25 Budapest", "nap": "Restoran u stilu Harryja Pottera: kotlići koji se dime, sove, portreti. Stol za 13 (10 djece + 3 odrasla) u sobi s oblacima. Ostali odrasli ručaju u blizini. Djeca biraju jelo unaprijed (Podsjetnik).", "ozn": ["rez", "djeca", "hrana"]}, {"t": "14:40–15:45", "sto": "Madame Tussauds", "gdje": "Dorottya u. 6, uz Vörösmarty tér", "mapa": "Madame Tussauds Budapest", "nap": "Voštane figure svjetskih i mađarskih zvijezda. Grupna cijena za 10+ osoba, termin se rezervira online. Tko ne ide: kava i Váci utca.", "ozn": ["fak", "djeca"], "akt": "tussauds"}, {"t": "16:00–17:00", "sto": "Krstarenje Dunavom", "gdje": "Legenda, pristanište 7 (Vigadó tér)", "mapa": "Legenda Sightseeing Boats Budapest", "nap": "Grijani brod, jedno piće uključeno, audio vodič. Pale se svjetla na Parlamentu, dvorcu i mostovima. Doći 20 min ranije.", "ozn": ["fak", "djeca"], "akt": "krstarenje"}, {"t": "17:00–18:00", "sto": "Vörösmarty tér u večernjem sjaju", "gdje": "5 min od pristaništa", "mapa": "Vörösmarty tér Budapest", "nap": "Okupljanje cijele grupe. Kürtőskalács i dječji punč. Tko se poslije ručka odmarao, pridružuje se ovdje.", "ozn": ["djeca"]}, {"t": "18:00–18:45", "sto": "Advent Bazilika", "gdje": "Szent István tér", "mapa": "Szent István tér Budapest", "nap": "Projekcija na pročelju i klizalište za djecu.", "ozn": ["djeca"]}, {"t": "18:45–19:45", "sto": "Večera u hodu", "gdje": "štandovi kod Bazilike ili na Vörösmarty tér", "nap": "Ništa se ne rezervira.", "ozn": ["hrana"]}, {"t": "~20:00", "sto": "Povratak", "gdje": "pješice, oko 15 min", "nap": ""}], "savjet": "Subota je duga. Obitelji s najmlađima mogu se poslije ručka odmoriti u smještaju i doći u 17:00 na Vörösmarty tér."}, {"id": "ned", "kratko": "Ned", "datum": "13.12.", "naziv": "Nedjelja 13.12.", "tema": "Gradski park i kući", "stavke": [{"t": "08:30–09:30", "sto": "Doručak, pakiranje i odjava", "gdje": "Golden Star", "nap": "Odjava do 11 h. Prtljaga ide u auta."}, {"t": "09:30–10:00", "sto": "Autima do Gradskog parka", "gdje": "Városliget, oko 4 km", "nap": "Nedjeljom je ulični parking uglavnom besplatan.", "ozn": ["auto"]}, {"t": "10:00–10:20", "sto": "Trg heroja", "gdje": "Hősök tere", "mapa": "Hősök tere Budapest", "nap": "Spomenik tisućljeća sa sedam mađarskih plemenskih vođa. Besplatno."}, {"t": "10:20–11:45", "sto": "Klizanje pred dvorcem Vajdahunyad", "gdje": "Városligeti Műjégpálya", "mapa": "Városligeti Műjégpálya", "nap": "Jedno od najvećih klizališta na otvorenom u Europi. Nedjeljom 10–14 h. Klizaljke se mogu unajmiti. Grijana prostorija.", "ozn": ["fak", "djeca"], "akt": "klizanje"}, {"t": "11:45–12:30", "sto": "VarázsLiget (Čarobni gaj)", "gdje": "uz dvorac Vajdahunyad", "mapa": "Vajdahunyad vára", "nap": "Panoramski kotač, mini vlak, vrtuljak, osvijetljena šuma. Ulaz besplatan, vožnje se plaćaju. Program za 2026. još nije objavljen.", "ozn": ["fak", "djeca"], "akt": "varazsliget"}, {"t": "", "sto": "Puskás Aréna: muzej i tura po stadionu", "gdje": "oko 3 km od Gradskog parka", "mapa": "Puskás Aréna", "nap": "Za muške, po želji. Muzej od 10 h, tura u 11 h (oko 90 min), karte na blagajni. Nakon ture ravno kući. Muzej termin 13.12. još nije izričito potvrdio.", "ozn": ["fak"], "akt": "puskas"}, {"t": "12:30–13:15", "sto": "Ručak u hodu", "gdje": "štandovi u VarázsLigetu ili McDonald's Oktogon", "mapa": "McDonald's Oktogon Budapest", "nap": "Bez rezervacije.", "ozn": ["hrana"]}, {"t": "13:30", "sto": "Polazak kući", "gdje": "M1/M7 → M70 → Goričan", "nap": "Tko ne ide na klizanje i VarázsLiget, može krenuti ranije.", "ozn": ["auto"]}, {"t": "~21:30", "sto": "Dolazak u Solin", "gdje": "", "nap": "Oko 7,5 h vožnje i 2 pauze."}], "savjet": "Ako pada kiša ili je jako hladno, klizanje i VarázsLiget otpadaju i krećemo ranije kući."}], "aktivnosti": {"zagreb": {"naziv": "Advent u Zagrebu", "dan": "čet", "cijena": "besplatno (taksi ili parking)", "glasovi": ""}, "tropicarium": {"naziv": "Tropicarium", "dan": "pet", "cijena": "petak do 17 h: odrasli 4.700 HUF, djeca 3.500 HUF, obiteljska 2 + 2 15.300 HUF (≈ 39 €)", "glasovi": ""}, "mystica": {"naziv": "Cinema Mystica", "dan": "pet", "cijena": "odrasli oko 19 €, djeca do 12 god. s popustom", "glasovi": ""}, "terasa": {"naziv": "Gornja terasa Ribarske utvrde", "dan": "sub", "cijena": "1.700 HUF, djeca do 14 god. 850 HUF", "glasovi": ""}, "siklo": {"naziv": "Uspinjača Sikló", "dan": "sub", "cijena": "jedan smjer 4.500 HUF, djeca 3–14 god. 2.000 HUF", "glasovi": ""}, "tussauds": {"naziv": "Madame Tussauds", "dan": "sub", "cijena": "grupa 10+: odrasli 9.990 HUF, djeca 6.490 HUF", "glasovi": ""}, "krstarenje": {"naziv": "Krstarenje Dunavom", "dan": "sub", "cijena": "25 €, djeca 10–14 god. 17,50 €, do 9 god. besplatno", "glasovi": ""}, "klizanje": {"naziv": "Klizanje", "dan": "ned", "cijena": "odrasli 4.000 HUF, učenici 3.000 HUF, najam klizaljki 3.500 HUF", "glasovi": ""}, "varazsliget": {"naziv": "VarázsLiget", "dan": "ned", "cijena": "vožnje oko 2.000–2.500 HUF (2025.)", "glasovi": ""}, "puskas": {"naziv": "Puskás Aréna (muški)", "dan": "ned", "cijena": "karte na blagajni", "glasovi": ""}}, "javiti_do": "29.11.", "javiti_zasto": "Karte za krstarenje, Madame Tussauds i Cinema Mystica kupuju se online do 1.12., pa Martina treba znati tko ide.", "podsjetnik": [{"id": "zagreb", "rok": "29.11.", "za": "svi", "tekst": "Javiti Martini idete li preko Zagreba (noćenje 10.–11.12.)", "nap": "Najvažnije! Besplatno otkazivanje u Zagrebu je samo do 7.12. u 23:59. Odgovor na kartici Pregled ili Javi se."}, {"id": "zagreb_uplata", "rok": "", "za": "uplata", "tekst": "Uplatiti Martini na račun za Zagreb (ako idete)", "nap": "Iznos za vašu obitelj piše na kartici Pregled."}, {"id": "odabir", "rok": "29.11.", "za": "svi", "tekst": "Javiti Martini na što idete", "nap": "Na kartici Plan označite fakultativne aktivnosti, pa na kartici Javi se pošaljite odabir Martini."}, {"id": "dokumenti", "rok": "5.12.", "za": "svi", "tekst": "Osobna iskaznica ili putovnica za svakoga, i za djecu", "nap": "Provjeriti da ne ističe prije 13.12."}, {"id": "ekzo", "rok": "5.12.", "za": "svi", "tekst": "EKZO kartica (europska zdravstvena) za svakoga", "nap": "Svako dijete svoju. HZZO Split, Obala kneza Branimira 14 (redomat, s OIB-om ili MBO-om, kartica odmah), ili preko eHZZO-a."}, {"id": "osiguranje", "rok": "5.12.", "za": "svi", "tekst": "Putno zdravstveno osiguranje", "nap": "Za sve putnike, s točnom dobi djece."}, {"id": "magic", "rok": "7.12.", "za": "djeca", "tekst": "Djeca biraju jelo u The Magicu", "nap": "Jelovnik: modernmenu.eu/en/magic1. Martina šalje narudžbu restoranu 8.–9.12. Djeca vole Battle of the Two Sides (2 burgera za podijeliti), Witch Mom's Pasta i Magic Ember (piletina s krumpirićima).", "link": "https://modernmenu.eu/en/magic1"}, {"id": "vinjeta", "rok": "5.12.", "za": "vozac", "tekst": "Mađarska e-vinjeta (10 dana)", "nap": "Online za točnu registraciju: e-autopalyamatrica.hu (posrednici naplaćuju više). Početni datum 11.12., vrijedi do 20.12."}, {"id": "enc", "rok": "10.12.", "za": "vozac", "tekst": "ENC ili kartica za hrvatske cestarine", "nap": ""}, {"id": "zimska", "rok": "10.12.", "za": "vozac", "tekst": "Zimska oprema i autosjedalice", "nap": "Zimska oprema u Hrvatskoj je obavezna od 15.11. do 15.4. Dijete niže od 150 cm vozi se u autosjedalici ili na podlošku."}, {"id": "parking", "rok": "5.12.", "za": "vozac", "tekst": "Parking u Budimpešti: opcija 1 Astoria (rezervacija online) ili opcija 2 Regus", "nap": ""}, {"id": "budapestgo", "rok": "11.12.", "za": "svi", "tekst": "Aplikacija BudapestGO na mobitelu", "nap": "Za karte za javni prijevoz u subotu (500 HUF po vožnji, za svakoga od 6 godina)."}, {"id": "placanje", "rok": "10.12.", "za": "svi", "tekst": "Kartica za plaćanje u eurima ili forintama, i malo forinti", "nap": "Na Vörösmarty tér plaća se samo karticom, kod Bazilike i gotovinom. 1 € ≈ 390 HUF."}, {"id": "odjeca", "rok": "10.12.", "za": "svi", "tekst": "Kape, rukavice, topla i udobna obuća", "nap": "Puno smo vani, a rukavice trebaju i za klizanje."}], "znas_li": ["Budim i Pešta bili su dva grada sve do 1873. Lančani most bio je prvi stalni most između njih.", "Metro M1 vozi od 1896. To je najstarija podzemna željeznica na europskom kontinentu.", "Rubikovu kocku izumio je Budimpeštanac Ernő Rubik 1974., a kemijsku olovku Mađar László Bíró.", "Kürtőskalács se peče namotan na drveni valjak iznad žara, pa je iznutra šupalj kao dimnjak.", "Turul je mitska ptica iz mađarskih legendi, a njezin veliki kip čuva Budimski dvorac.", "U Tropicariumu kroz tunel ispod akvarija morski psi plivaju točno iznad glave.", "13. prosinca je Lucijin dan. U Mađarskoj se toga dana počinje izrađivati Lucijin stolac, koji se dovršava do Badnjaka."], "hrana": [["Kürtőskalács (dimnjak-kolač)", "2.800–4.900 HUF", true], ["Lángos (prženo tijesto s vrhnjem i sirom)", "2.200–3.000 HUF", true], ["Gulaš u kruhu", "4.500 HUF", false], ["Pečeni kesteni", "2.500 HUF", true], ["Dječji punč (gyerekpuncs) i vruća čokolada", "na mnogim štandovima", true], ["Kuhano vino (forralt bor)", "1.600 HUF", false]], "skripta": "https://script.google.com/macros/s/AKfycbzwP5yIAHwVM8i5y6IevBOhHFgASOmOKKR21OOKHoXXi79NjK6hRAAMnKrfIX3AwD99/exec", "_skripta": "URL Google Apps Script web aplikacije (tools/google_prijave.gs). Prazno = samo WhatsApp.", "zagreb": {"javiti_do": "29.11.", "otkaz_do": "7.12. u 23:59", "objekt": "CASA V BENCUN, Kriška 1, Zagreb", "nocenje": "čet 10.12. – pet 11.12., 1 noćenje", "cijene": {"smln": "108,00", "nimm": "108,00", "ajk": "96,30", "bp": "89,10", "gkdn": "95,58", "dp": "81,81", "dmtm": "95,58"}, "bez_uplate": ["smln"], "zasto": "Apartmani u Zagrebu rezervirani su za sve obitelji. Besplatno se mogu otkazati samo do 7.12. u 23:59, a od 8.12. naplaćuje se puna cijena. Zato Martina mora na vrijeme znati tko ide preko Zagreba."}};
+const P = "bpa26:";
+function citaj(k, d) { try { const v = localStorage.getItem(P + k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }
+function pisi(k, v) { try { localStorage.setItem(P + k, JSON.stringify(v)); } catch (e) {} }
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const $ = id => document.getElementById(id);
+
+let obiteljId = citaj("obitelj", "");
+if (obiteljId && !D.obitelji.some(o => o.id === obiteljId)) obiteljId = "";
+let danId = citaj("dan", "pet");
+let filter = "sve";
+const ob = () => D.obitelji.find(o => o.id === obiteljId) || null;
+const oznaka = id => (D.obitelji.find(o => o.id === id) || {}).ime || id;
+const kljuc = k => k + ":" + (obiteljId || "x");
+let izbori = {}, lajkovi = [], kvacice = {};
+function ucitajObitelj() {
+  kod = obiteljId ? citaj("kod:" + obiteljId, "") : ""; slanje = { stanje: "", vrijeme: "" };
+  // S tablicom: dok kod izabrane obitelji nije upisan na ovom mobitelu, ništa se ne prikazuje kao označeno
+  if (D.skripta && !kod) { izbori = {}; lajkovi = []; kvacice = {}; return; }
+  izbori = citaj(kljuc("izbor"), {}); lajkovi = citaj(kljuc("lajk"), []); kvacice = citaj(kljuc("todo"), {});
+  for (const k of Object.keys(izbori)) if (izbori[k] === "mozda") delete izbori[k]; // „Možda” je maknut 23.11.
+}
+
+/* Potvrđeno stanje: ručno iz JSON-a (D.potvrde) + Martinine potvrde iz Google tablice (D.skripta) */
+let server = { potvrde: {}, izbori: {}, lajkovi: {} };
+async function ucitajServer() {
+  if (!D.skripta) return;
+  try {
+    const r = await fetch(D.skripta + "?akcija=stanje", { cache: "no-store" });
+    const j = await r.json();
+    server = { potvrde: j.potvrde || {}, izbori: j.izbori || {}, lajkovi: j.lajkovi || {} };
+    prikazi(false);
+  } catch (e) { /* bez veze: stranica radi s onim što ima */ }
+}
+/* ---------- Slanje u Martininu tablicu (kad je D.skripta postavljen) ----------
+   Obitelj jednom upiše svoj kod (dobila ga je od Martine; kod nije na stranici, provjerava ga skripta u tablici).
+   Nakon toga svaki klik (Zagreb, idemo na, srce, kvačica) sam ode u tablicu – šalje se samo ono što se promijenilo. */
+const S = !!D.skripta;
+let kod = "", slanje = { stanje: "", vrijeme: "" }, tajmer = 0, uTijeku = false, opet = false;
+async function zovi(par) {
+  const r = await fetch(D.skripta + "?" + new URLSearchParams(par).toString(), { cache: "no-store" });
+  return r.json();
+}
+function dijelovi(st) {
+  const out = []; let d = [];
+  for (const s of st) {
+    const nov = [...d, s];
+    if (d.length && (nov.length > 30 || encodeURIComponent(JSON.stringify(nov)).length > 1500)) { out.push(d); d = [s]; } else d = nov;
+  }
+  if (d.length) out.push(d);
+  return out;
+}
+function zakazi() { if (!S) return; clearTimeout(tajmer); tajmer = setTimeout(sinkroniziraj, 1200); kodTraka(); }
+async function sinkroniziraj(dodatno) {
+  if (!S || !obiteljId || !kod) { kodTraka(); return false; }
+  if (uTijeku) { opet = true; return false; }
+  const oid = obiteljId, k = kod, snap = trenutno();
+  const st = promjene().concat(dodatno || []);
+  if (!st.length) { kodTraka(); return true; }
+  uTijeku = true; slanje.stanje = "salje"; kodTraka();
+  let ok = true;
+  try {
+    for (const dio of dijelovi(st)) {
+      const j = await zovi({ akcija: "upis", obitelj: oid, kod: k, stavke: JSON.stringify(dio) });
+      if (!j.ok) {
+        ok = false;
+        if (j.greska === "kod") { pisi("kod:" + oid, ""); if (obiteljId === oid) kod = ""; toast("Kod obitelji ne vrijedi – upišite ga ponovno"); }
+        break;
+      }
+    }
+  } catch (e) { ok = false; }
+  uTijeku = false;
+  if (obiteljId === oid) {
+    if (ok) { pisi(kljuc("poslano"), snap); slanje = { stanje: "ok", vrijeme: new Date().toLocaleTimeString("hr-HR", { hour: "2-digit", minute: "2-digit" }) }; }
+    else slanje.stanje = "greska";
+    kodTraka();
+  } else if (ok) pisi("poslano:" + oid, snap);
+  if (opet) { opet = false; setTimeout(sinkroniziraj, 300); }
+  return ok;
+}
+function kodTraka() {
+  const el = $("kodtraka");
+  if (!S || !obiteljId) { el.innerHTML = ""; return; }
+  if (!kod) {
+    el.innerHTML = `<div class="rok"><b>Upišite kod obitelji ${esc(oznaka(obiteljId))}</b><span class="mali">Kod vam je Martina poslala u poruci. Upisuje se samo jednom na ovom mobitelu. Bez koda se za ovu obitelj ne može ništa označiti.</span>
+      <form class="kod-unos" id="kodforma"><input id="kodpolje" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="12" aria-label="Kod obitelji" placeholder="kod"><button class="btn" type="submit">Potvrdi</button></form></div>`;
+    $("kodforma").onsubmit = async ev => {
+      ev.preventDefault();
+      const v = $("kodpolje").value.replace(/\s/g, "").toUpperCase(); if (!v) return;
+      const btn = $("kodforma").querySelector("button"); btn.disabled = true; btn.textContent = "Provjeravam…";
+      const oid = obiteljId;
+      try {
+        const j = await zovi({ akcija: "provjera", obitelj: oid, kod: v });
+        if (j.ok) { pisi("kod:" + oid, v); if (obiteljId === oid) ucitajObitelj(); toast("Kod je ispravan – od sada sve stiže Martini"); prikazi(false); sinkroniziraj(); return; }
+        toast("Kod nije ispravan – provjerite poruku od Martine");
+      } catch (e) { toast("Nema veze s Martininom tablicom – pokušajte malo kasnije"); }
+      btn.disabled = false; btn.textContent = "Potvrdi";
+    };
+    return;
+  }
+  const n = promjene().length, greska = slanje.stanje === "greska";
+  const t = slanje.stanje === "salje" ? "Šaljem Martini…" : greska ? `Nije poslano Martini (${n}) – provjerite internet` : n ? `Šaljem Martini za trenutak (${n})…`
+    : slanje.vrijeme ? `✓ Sve što ste označili stiglo je Martini (${slanje.vrijeme})` : "✓ Sve što označite stiže Martini";
+  el.innerHTML = `<div class="stanje-slanja${greska ? " greska" : ""}"><span>${esc(t)}</span>${greska ? `<button class="btn" id="ponovo">Pošalji ponovno</button>` : ""}</div>`;
+  if (greska) $("ponovo").onclick = () => sinkroniziraj();
+}
+/* S tablicom: klik se prihvaća samo za obitelj čiji je kod upisan na ovom mobitelu. */
+function smijem() {
+  if (!S) return true;
+  if (!obiteljId) { toast("Najprije odaberite obitelj gore desno"); return false; }
+  if (!kod) {
+    toast(`Za obitelj ${oznaka(obiteljId)} treba njihov kod`);
+    kodTraka(); window.scrollTo(0, 0);
+    const p = $("kodpolje"); if (p) p.focus();
+    return false;
+  }
+  return true;
+}
+const stizeMartini = () => !S ? "" : kod ? "Odgovor je otišao Martini; kad ga potvrdi, ovdje piše ✓." : "Upišite kod obitelji na vrhu stranice, da odgovor stigne Martini.";
+
+const potvrda = (oid, stavka) => (server.potvrde[oid] && server.potvrde[oid][stavka]) || (D.potvrde && D.potvrde[oid] && D.potvrde[oid][stavka]) || "";
+
+const IZBORI = [["svi", "Idemo svi"], ["djeca", "Samo djeca"], ["ne", "Ne idemo"]];
+const IZBOR_TXT = Object.fromEntries(IZBORI);
+const OZN = { djeca: ["djeca", "za djecu"], fak: ["fak", "fakultativno"], rez: ["rez", "rezervirano"] };
+const mapa = q => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
+
+function toast(t) { const el = $("toast"); el.textContent = t; el.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => el.hidden = true, 2600); }
+
+/* ---------- Pregled ---------- */
+function danaDo() { const ms = new Date(D.polazak) - new Date(); return Math.ceil(ms / 86400000); }
+function pregled() {
+  const o = ob(), n = danaDo();
+  const pk = o ? D.parking[o.parking] : null;
+  let h = `<div class="hero"><span class="oznaka-sekcije">10.–13. prosinca 2026. · 7 obitelji · 23 putnika</span>`;
+  h += n > 0 ? `<div class="odbrojavanje"><b>${n}</b><span>${n % 10 === 1 && n % 100 !== 11 ? "dan" : "dana"} do polaska iz Solina<br><span class="mut mali">četvrtak 10.12. u 16:00</span></span></div>`
+    : (new Date() < new Date(D.povratak) ? `<h2>Sretan put!</h2>` : `<h2>Hvala svima na putovanju!</h2>`);
+  h += `</div>`;
+  const zg = D.zagreb, zi2 = izbori.zagreb_nocenje || "";
+  h += `<div class="blok zagreb"><span class="oznaka-sekcije">Najvažnije · javite do ${esc(zg.javiti_do)}</span><h3>Idete li preko Zagreba?</h3>
+    <p style="margin:0" class="nap">${esc(zg.nocenje)}, ${esc(zg.objekt)}. ${esc(zg.zasto)}</p>
+    ${o ? `<div class="iznos"><span class="mali">Cijena noćenja u Zagrebu za vašu obitelj</span><b>${esc(zg.cijene[o.id])} €</b>${zg.bez_uplate.includes(o.id) ? `<span class="mali mut">vaša rezervacija – ne uplaćuje se</span>` : `<span class="mali">ako idete, uplata Martini na račun</span>`}</div>` : `<p class="mali mut" style="margin:0">Odaberite obitelj gore desno, pa vidite svoju cijenu.</p>`}
+    <div class="izbor dva" role="group" aria-label="Idete li preko Zagreba">${[["da", "Idemo preko Zagreba"], ["ne", "Ne idemo preko Zagreba"]].map(([v, t]) => `<button data-zg="${v}" aria-pressed="${zi2 === v}">${t}</button>`).join("")}</div>
+    ${zi2 ? (S ? `<span class="mali">${o && ((server.izbori.zagreb_nocenje || {})[zi2] || []).includes(o.ime) ? `<span class="zn djeca">✓ Martina je potvrdila vaš odgovor</span>` : esc(stizeMartini())}</span>`
+      : `<a class="btn glavni" href="#javi" style="align-self:flex-start">Pošalji odgovor Martini</a>`) : ""}
+  </div>`;
+  h += `<div class="rok"><b>Do ${esc(D.javiti_do)} javite i na što idete</b><span class="mali">${esc(D.javiti_zasto)}</span><a class="btn" href="#plan">Označi u planu</a></div>`;
+  if (o) {
+    h += `<div class="blok"><span class="oznaka-sekcije">Obitelj ${esc(o.ime)}</span><h3>Vaš smještaj u Golden Staru</h3><dl class="kv">
+      <dt>Jedinica</dt><dd>${esc(o.jedinica)}</dd>
+      <dt>Upute</dt><dd><a href="${esc(o.upute)}" target="_blank" rel="noopener">slike i upute za jedinicu ↗</a></dd>
+      <dt>Vozimo se</dt><dd>${o.vozilo === "kombi" ? "kombijem" : "svojim autom"}</dd>
+      <dt>Parking</dt><dd>${o.parking === "astoria" ? `${esc(D.parking.astoria.kratko)}${o.parking_stanje ? ` <span class="zn ${o.parking_stanje === "rezervirano" ? "djeca" : "fak"}">${esc(o.parking_stanje)}</span>` : ""}${o.vozilo === "kombi" ? `<br><span class="mut mali">Kombi ne stane u garažu Regus (najviše 1,90 m).</span>` : ""}` : `opcija 1 Astoria (rezervacija online) ili opcija 2 Regus (bez rezervacije)<br><span class="mut mali">Upute korak po korak su niže, u dijelu Parking.</span>`}</dd>
+    </dl></div>`;
+  } else {
+    h += `<div class="blok"><h3>Odaberite svoju obitelj</h3><p class="mut" style="margin:0">Gore desno, „Mi smo”. Oznaka obitelji su početna slova vaših imena. Tada vidite svoj apartman, parking i svoj podsjetnik.</p></div>`;
+  }
+  h += `<div class="blok"><h3>Smještaj</h3><dl class="kv">
+    <dt>Budimpešta</dt><dd><a href="${mapa("Szép utca 5, Budapest")}" target="_blank" rel="noopener">A Golden Star, Szép utca 5 ↗</a><br><span class="mut mali">Prijava 15–20 h, odjava do 11 h. Nema recepcije: kodove za ulaz Martina prosljeđuje na dan dolaska. Nema doručka. Lift do 1. kata.</span></dd>
+    <dt>Zagreb</dt><dd><a href="${mapa("Kriška 1, Zagreb")}" target="_blank" rel="noopener">CASA V BENCUN, Kriška 1 ↗</a><br><span class="mut mali">Četvrtak navečer. Besplatan parking, recepcija do ponoći.</span></dd>
+  </dl></div>`;
+  h += `<div class="blok" id="parking"><h3>Parking u Budimpešti</h3><p class="mali" style="margin:0">Parking plaća svaki vozač sam. Kombi može samo na Astoriju.</p>${["astoria", "regus"].map(k => { const p = D.parking[k]; return `<div class="park"><b>${esc(p.naziv)}</b><span class="mut mali">${esc(p.adresa)}</span><span class="nap">${esc(p.opis)}</span><ol>${p.koraci.map(x => `<li>${esc(x)}</li>`).join("")}</ol><a class="btn" href="${esc(p.link)}" target="_blank" rel="noopener" style="align-self:flex-start">${k === "astoria" ? "Rezerviraj Astoriju ↗" : "Regus na karti ↗"}</a></div>`; }).join("")}</div>`;
+  h += `<div class="blok"><h3>The Magic, subota u 13:00</h3><p style="margin:0" class="nap">Restoran u stilu Harryja Pottera, stol za 10 djece i 3 odrasla. Djeca biraju jelo do 7.12. (<a href="#podsjetnik">Podsjetnik</a>).</p></div>`;
+  h += `<div class="blok"><h3>Na štandovima</h3><ul class="hrana">${D.hrana.map(([nz, c, d]) => `<li><span>${esc(nz)}${d ? ' <span class="zn djeca">djeca vole</span>' : ""}</span><span>${esc(c)}</span></li>`).join("")}</ul><span class="mut mali">Cijene iz 2025. 1 € ≈ 390 HUF. Na Vörösmarty tér samo kartica.</span></div>`;
+  const zi = Math.floor(Math.random() * D.znas_li.length);
+  h += `<div class="blok"><span class="oznaka-sekcije">Znaš li? · za djecu</span><p style="margin:0" id="znas">${esc(D.znas_li[zi])}</p><button class="btn" id="jos" style="align-self:flex-start">Još jedno</button></div>`;
+  h += `<p class="mut mali" style="margin:0">Ažurirano ${esc(D.azurirano)}. Plan i rokovi mogu se još mijenjati.</p>`;
+  $("v-pregled").innerHTML = h;
+  let i = zi; $("jos").onclick = () => { i = (i + 1) % D.znas_li.length; $("znas").textContent = D.znas_li[i]; };
+  $("v-pregled").querySelectorAll("[data-zg]").forEach(b => b.onclick = () => {
+    if (!obiteljId) { toast("Najprije odaberite obitelj gore desno"); return; }
+    if (!smijem()) return;
+    izbori.zagreb_nocenje = izbori.zagreb_nocenje === b.dataset.zg ? "" : b.dataset.zg; pisi(kljuc("izbor"), izbori); pregled(); zakazi(); });
+}
+
+/* ---------- Plan ---------- */
+function prijavljeno(akt) {
+  const s = server.izbori[akt];
+  if (s) {
+    const dijelovi = IZBORI.filter(([v]) => s[v] && s[v].length).map(([v, t]) => `${t}: ${s[v].map(esc).join(", ")}`);
+    if (dijelovi.length) return `<div class="glasovi">Potvrđeno · ${dijelovi.join(" · ")}</div>`;
+  }
+  const a = D.aktivnosti[akt];
+  return a && a.glasovi ? `<div class="glasovi">Prijavljeno: ${esc(a.glasovi)}</div>` : "";
+}
+function plan() {
+  const dan = D.dani.find(d => d.id === danId) || D.dani[1];
+  let h = `<h2>Plan po danima</h2><div class="prijedlog"><b>Prijedlog – još se potvrđuje</b><span class="mali">Vremena i redoslijed mogu se promijeniti. Konačni plan javit će Martina.</span></div><div class="dani" role="group" aria-label="Dan">${D.dani.map(d => `<button class="dan-btn" data-dan="${d.id}" aria-pressed="${d.id === dan.id}">${esc(d.kratko)}<small>${esc(d.datum)}</small></button>`).join("")}</div>`;
+  h += `<div class="filteri" role="group" aria-label="Prikaži">${[["sve", "Sve"], ["djeca", "Za djecu"], ["fak", "Fakultativno"], ["moje", "♥ Naše"]].map(([k, t]) => `<button class="chip" data-f="${k}" aria-pressed="${filter === k}">${t}</button>`).join("")}</div>`;
+  h += `<div class="blok"><span class="oznaka-sekcije">${esc(dan.naziv)}</span><h3>${esc(dan.tema)}</h3><div class="vozni-red">`;
+  const st = dan.stavke.map((s, i) => ({ s, k: dan.id + i })).filter(({ s, k }) => {
+    const oz = s.ozn || [];
+    if (filter === "djeca") return oz.includes("djeca");
+    if (filter === "fak") return oz.includes("fak");
+    if (filter === "moje") return lajkovi.includes(k) || (s.akt && izbori[s.akt] && izbori[s.akt] !== "ne");
+    return true;
+  });
+  if (!st.length) h += `<p class="prazno-stanje">${filter === "moje" ? "Ovdje se skupljaju stavke koje označite srcem ili za koje izaberete da idete." : "Taj dan nema takvih stavki."}</p>`;
+  for (const { s, k } of st) {
+    const oz = (s.ozn || []).filter(x => OZN[x]);
+    const a = s.akt ? D.aktivnosti[s.akt] : null;
+    const nl = server.lajkovi[k] || 0;
+    h += `<div class="stavka"><div class="vrijeme${s.t ? "" : " prazno"}">${esc(s.t || "po želji")}</div><div class="sadrzaj">
+      <div class="naslov-red"><h3>${esc(s.sto)}</h3><button class="srce" data-lajk="${k}" aria-pressed="${lajkovi.includes(k)}" aria-label="Sviđa nam se: ${esc(s.sto)}">${lajkovi.includes(k) ? "♥" : "♡"}${nl ? `<span class="broj">${nl}</span>` : ""}</button></div>
+      ${oz.length ? `<div class="znacke">${oz.map(x => `<span class="zn ${OZN[x][0]}">${OZN[x][1]}</span>`).join("")}</div>` : ""}
+      ${s.gdje ? `<div class="gdje">${s.mapa ? `<a href="${mapa(s.mapa)}" target="_blank" rel="noopener">${esc(s.gdje)} ↗</a>` : esc(s.gdje)}</div>` : ""}
+      ${s.nap ? `<div class="nap">${esc(s.nap)}</div>` : ""}
+      ${a ? `<div class="cijena">${esc(a.cijena)}</div>
+        <div class="izbor" role="group" aria-label="Idete li: ${esc(a.naziv)}">${IZBORI.map(([v, t]) => `<button data-akt="${s.akt}" data-v="${v}" aria-pressed="${izbori[s.akt] === v}">${t}</button>`).join("")}</div>
+        ${prijavljeno(s.akt)}` : ""}
+    </div></div>`;
+  }
+  h += `</div></div>`;
+  if (dan.savjet && filter === "sve") h += `<div class="savjet">${esc(dan.savjet)}</div>`;
+  const n = promjene().length;
+  if (!S) h += `<div class="redak"><a class="btn glavni" href="#javi">Pošalji Martini${n ? ` (${n} novo)` : ""}</a></div>`;
+  $("v-plan").innerHTML = h;
+  $("v-plan").querySelectorAll("[data-dan]").forEach(b => b.onclick = () => { danId = b.dataset.dan; pisi("dan", danId); plan(); });
+  $("v-plan").querySelectorAll("[data-f]").forEach(b => b.onclick = () => { filter = b.dataset.f; plan(); });
+  $("v-plan").querySelectorAll("[data-lajk]").forEach(b => b.onclick = () => {
+    if (!smijem()) return;
+    const k = b.dataset.lajk; lajkovi = lajkovi.includes(k) ? lajkovi.filter(x => x !== k) : [...lajkovi, k]; pisi(kljuc("lajk"), lajkovi);
+    if (!obiteljId) toast("Odaberite obitelj gore desno"); plan(); zakazi(); });
+  $("v-plan").querySelectorAll("[data-akt]").forEach(b => b.onclick = () => {
+    if (!smijem()) return;
+    const a = b.dataset.akt; izbori[a] = izbori[a] === b.dataset.v ? "" : b.dataset.v; pisi(kljuc("izbor"), izbori);
+    if (!obiteljId) toast("Odaberite obitelj gore desno"); plan(); zakazi(); });
+}
+
+/* ---------- Podsjetnik ---------- */
+function stavkePodsjetnika() {
+  const o = ob();
+  return D.podsjetnik.filter(z => !(z.za === "uplata" && o && D.zagreb.bez_uplate.includes(o.id))).map(z => {
+    let nap = z.nap, info = "", tekst = z.tekst;
+    if (z.id === "zagreb_uplata" && o) nap = `Za vašu obitelj ${D.zagreb.cijene[o.id]} € – samo ako idete preko Zagreba.`;
+    if (z.id === "zagreb" && izbori.zagreb_nocenje) info = (izbori.zagreb_nocenje === "da" ? "Odabrali ste: idemo preko Zagreba" : "Odabrali ste: ne idemo preko Zagreba") + (S ? "." : " – pošaljite Martini (Javi se).");
+    if (z.za === "vozac") {
+      info = o && o.vozilo === "kombi" ? "Za kombi ovo rješava vozač kombija." : "Za vozača.";
+      if (z.id === "vinjeta" && o) tekst += o.vinjeta === "D2" ? " – kombi, kategorija D2" : " – auto, kategorija D1";
+      if (z.id === "parking") {
+        if (o && o.parking === "astoria") { nap = `${D.parking.astoria.naziv}, ${D.parking.astoria.adresa}.`; info = o.parking_stanje === "rezervirano" ? "Rezervirano." : "Rezervacija za kombi je u tijeku."; }
+        else nap = "Opcija 1: Astoria u našoj ulici, rezervacija online. Opcija 2: garaža Regus, 50 m, bez rezervacije (kombi ne stane). Upute korak po korak su na kartici Pregled, u dijelu Parking.";
+      }
+    }
+    return { ...z, nap, info, tekst, potvrdeno: o ? potvrda(o.id, z.id) : "" };
+  });
+}
+function podsjetnik() {
+  const o = ob(); const st = stavkePodsjetnika();
+  const ceka = z => !z.potvrdeno && !!kvacice[z.id];
+  const np = st.filter(z => z.potvrdeno).length, nc = st.filter(ceka).length;
+  let h = `<h2>Podsjetnik${o ? " · " + esc(o.ime) : ""}</h2>`;
+  if (!o) h += `<p class="mut" style="margin:0">Odaberite obitelj gore desno, pa se popis prilagodi (auto ili kombi) i kvačice se pamte za vašu obitelj na ovom mobitelu.</p>`;
+  else h += `<p style="margin:0" class="mali">${S ? "Označite što ste napravili – kvačica sama stiže Martini." : `Označite što ste napravili i pošaljite Martini preko kartice <a href="#javi">Javi se</a>.`} Kad Martina provjeri, stavka dobije <span class="zn djeca">✓ potvrđeno</span>.</p>`;
+  h += `<div class="blok"><div class="redak" style="justify-content:space-between"><b>${np} od ${st.length} potvrđeno</b><span class="mut mali">${nc ? nc + " čeka potvrdu" : "kvačice se pamte na ovom mobitelu"}</span></div><div class="napredak"><i style="width:${Math.round(100 * np / st.length)}%"></i><i class="ceka-traka" style="width:${Math.round(100 * nc / st.length)}%"></i></div>
+    <ul class="zadaci">${st.map(z => `<li class="${z.potvrdeno ? "gotovo" : ceka(z) ? "ceka" : ""}"><input type="checkbox" id="t-${z.id}" data-t="${z.id}" ${z.potvrdeno || ceka(z) ? "checked" : ""} ${z.potvrdeno ? "disabled" : ""}>
+      <label for="t-${z.id}"><span>${esc(z.tekst)}${z.za === "djeca" ? ' <span class="zn djeca">djeca</span>' : ""}</span>${z.nap ? `<span class="info">${esc(z.nap)}${z.link ? ` <a href="${esc(z.link)}" target="_blank" rel="noopener">jelovnik ↗</a>` : ""}</span>` : ""}${z.info ? `<span class="info"><b>${esc(z.info)}</b></span>` : ""}${z.potvrdeno ? `<span><span class="zn djeca">✓ potvrdila Martina ${esc(z.potvrdeno)}</span></span>` : ceka(z) ? `<span><span class="zn fak">čeka Martininu potvrdu</span></span>` : ""}</label>
+      <span class="dok">${z.rok ? "do " + esc(z.rok) : ""}</span></li>`).join("")}</ul></div>`;
+  if (nc && !S) h += `<div class="redak"><a class="btn glavni" href="#javi">Pošalji Martini na potvrdu</a></div>`;
+  $("v-podsjetnik").innerHTML = h;
+  $("v-podsjetnik").querySelectorAll("[data-t]").forEach(c => c.onchange = () => { if (!smijem()) { c.checked = !c.checked; return; } kvacice[c.dataset.t] = c.checked; pisi(kljuc("todo"), kvacice); podsjetnik(); zakazi(); });
+}
+
+/* ---------- Javi se ---------- */
+/* Sve što obitelj trenutno ima označeno, kao popis stavki za tablicu. Ključ vrsta|stavka. */
+function trenutno() {
+  const m = {};
+  if (izbori.zagreb_nocenje) m["izbor|zagreb_nocenje"] = { vrsta: "izbor", stavka: "zagreb_nocenje", naziv: "Zagreb – noćenje 10.–11.12.", vrijednost: izbori.zagreb_nocenje, opis: izbori.zagreb_nocenje === "da" ? "idemo preko Zagreba" : "ne idemo preko Zagreba" };
+  for (const [k, a] of Object.entries(D.aktivnosti)) if (izbori[k]) m["izbor|" + k] = { vrsta: "izbor", stavka: k, naziv: a.naziv + " (" + a.dan + ")", vrijednost: izbori[k], opis: IZBOR_TXT[izbori[k]] };
+  for (const d of D.dani) d.stavke.forEach((s, i) => { const k = d.id + i; if (lajkovi.includes(k)) m["lajk|" + k] = { vrsta: "lajk", stavka: k, naziv: s.sto + " (" + d.kratko.toLowerCase() + ")", vrijednost: "1", opis: "sviđa nam se" }; });
+  for (const z of stavkePodsjetnika()) if (kvacice[z.id]) m["podsjetnik|" + z.id] = { vrsta: "podsjetnik", stavka: z.id, naziv: z.tekst, vrijednost: "1", opis: "napravili smo" };
+  return m;
+}
+/* Samo ono što se promijenilo od zadnjeg slanja; povučeno se šalje s praznom vrijednošću. */
+function promjene() {
+  if (!obiteljId) return [];
+  const sad = trenutno(), bilo = citaj(kljuc("poslano"), {});
+  const out = [];
+  for (const [k, v] of Object.entries(sad)) if (!bilo[k] || bilo[k].vrijednost !== v.vrijednost) out.push(v);
+  for (const [k, v] of Object.entries(bilo)) if (!sad[k]) out.push({ ...v, vrijednost: "", opis: "povučeno" });
+  return out;
+}
+function poruka() {
+  const o = ob(); const L = [];
+  L.push(`*Budimpešta advent – ${o ? o.ime : "(obitelj)"}*`);
+  if (izbori.zagreb_nocenje) L.push(`*ZAGREB (noćenje 10.–11.12.): ${izbori.zagreb_nocenje === "da" ? "IDEMO preko Zagreba" : "NE idemo preko Zagreba"}*`);
+  const po = { svi: [], djeca: [], mozda: [], ne: [] };
+  for (const [k, a] of Object.entries(D.aktivnosti)) if (izbori[k]) po[izbori[k]].push(`${a.naziv} (${a.dan})`);
+  for (const [v, t] of IZBORI) if (po[v].length) L.push(t + ": " + po[v].join(", "));
+  const sv = [];
+  for (const d of D.dani) d.stavke.forEach((s, i) => { if (lajkovi.includes(d.id + i)) sv.push(`${s.sto} (${d.kratko.toLowerCase()})`); });
+  if (sv.length) L.push("Sviđa nam se: " + sv.join(", "));
+  const nap = stavkePodsjetnika().filter(z => !z.potvrdeno && kvacice[z.id]).map(z => z.tekst);
+  if (nap.length) L.push("Podsjetnik – napravili smo (molim potvrdu): " + nap.join("; "));
+  const p = ($("prijedlog")?.value || citaj(kljuc("prijedlog"), "")).trim();
+  if (p) L.push("Prijedlog / pitanje: " + p);
+  return L.join("\n");
+}
+async function posalji() {
+  const o = ob(); if (!o) { toast("Najprije odaberite obitelj gore desno"); return; }
+  if (!kod) { toast("Najprije upišite kod obitelji (na vrhu stranice)"); return; }
+  const p = ($("prijedlog").value || "").trim();
+  const dod = p ? [{ vrsta: "prijedlog", stavka: "prijedlog", naziv: "Prijedlog / pitanje", vrijednost: p.slice(0, 500), opis: p.slice(0, 500) }] : [];
+  if (!dod.length && !promjene().length) { toast("Nema ništa novo za poslati"); return; }
+  if (uTijeku) { toast("Upravo se šalje – pokušajte za trenutak"); return; }
+  const btn = $("posalji"); btn.disabled = true; btn.textContent = "Šaljem…";
+  const ok = await sinkroniziraj(dod);
+  if (ok) {
+    if (p) { $("prijedlog").value = ""; pisi(kljuc("prijedlog"), ""); }
+    pisi(kljuc("zadnje"), new Date().toLocaleString("hr-HR"));
+    toast(p ? "Prijedlog je poslan Martini" : "Poslano Martini");
+  } else toast("Slanje nije uspjelo. Provjerite internet ili pošaljite na WhatsApp.");
+  javi();
+}
+function javi() {
+  const o = ob(); const S = !!D.skripta;
+  let h = `<h2>Javi se Martini</h2><p style="margin:0">Na kartici Plan označite na što idete i što vam se sviđa, a u Podsjetniku što ste napravili. ${S ? "Sve to samo stiže Martini. Ovdje joj možete poslati i prijedlog ili pitanje. Martina sve provjeri, a na stranici se pokaže tek kad potvrdi." : "Ovdje dopišite prijedlog ili pitanje i pošaljite. Otvori se WhatsApp s gotovim tekstom: izaberite Martinu ili grupu."}</p>`;
+  if (!o) h += `<div class="rok"><b>Najprije odaberite obitelj</b><span class="mali">Gore desno, „Mi smo”.</span></div>`;
+  else if (!izbori.zagreb_nocenje) h += `<div class="rok"><b>Još niste odgovorili idete li preko Zagreba</b><span class="mali">To je najvažnije – javite do ${esc(D.zagreb.javiti_do)}.</span><a class="btn" href="#pregled">Odgovori</a></div>`;
+  h += `<div class="blok"><label for="prijedlog"><b>Prijedlog ili pitanje</b></label><textarea id="prijedlog" maxlength="500" placeholder="npr. Može li krstarenje kasnije? Imamo ideju za nedjelju…"></textarea></div>`;
+  if (S) {
+    const zadnje = citaj(kljuc("zadnje"), "");
+    h += `<div class="blok"><span class="oznaka-sekcije">Još nije stiglo Martini</span><div class="sazetak" id="sazetak"></div>
+      <div class="redak"><button class="btn glavni" id="posalji">Pošalji Martini</button></div>
+      ${zadnje ? `<span class="mut mali">Zadnji prijedlog s ovog mobitela: ${esc(zadnje)}</span>` : ""}</div>
+      <details class="blok"><summary>Radije preko WhatsAppa</summary><div class="redak"><a class="btn" id="wa" href="#" target="_blank" rel="noopener">Pošalji na WhatsApp</a><button class="btn" id="kopiraj">Kopiraj tekst</button></div></details>`;
+  } else {
+    h += `<div class="blok"><span class="oznaka-sekcije">Poruka koja se šalje</span><div class="sazetak" id="sazetak"></div>
+      <div class="redak"><a class="btn glavni" id="wa" href="#" target="_blank" rel="noopener">Pošalji na WhatsApp</a><button class="btn" id="kopiraj">Kopiraj tekst</button></div></div>`;
+  }
+  $("v-javi").innerHTML = h;
+  const ta = $("prijedlog"); ta.value = citaj(kljuc("prijedlog"), "");
+  const osvjezi = () => {
+    const t = poruka();
+    if (S) {
+      const pr = promjene(); const p = ta.value.trim();
+      const red = pr.map(x => `• ${x.naziv}: ${x.opis}`); if (p) red.push(`• Prijedlog: ${p}`);
+      $("sazetak").textContent = red.length ? red.join("\n") : "Sve što ste označili stiglo je Martini.";
+    } else $("sazetak").textContent = t;
+    $("wa").href = "https://wa.me/?text=" + encodeURIComponent(t);
+  };
+  ta.oninput = () => { pisi(kljuc("prijedlog"), ta.value); osvjezi(); };
+  osvjezi();
+  if (S) $("posalji").onclick = posalji;
+  $("kopiraj").onclick = () => {
+    const t = poruka();
+    const sel = () => { const r = document.createRange(); r.selectNodeContents($("sazetak")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast("Tekst je označen, kopirajte ga"); };
+    try { navigator.clipboard.writeText(t).then(() => toast("Kopirano"), sel); } catch (e) { sel(); }
+  };
+}
+
+/* ---------- Okvir ---------- */
+const VIEWS = { pregled, plan, podsjetnik, javi };
+function prikazi(naVrh = true) {
+  const v = (location.hash || "#pregled").slice(1);
+  const ime = VIEWS[v] ? v : "pregled";
+  kodTraka();
+  if (!naVrh && ime === "javi") return; // ne prekidati pisanje prijedloga
+  for (const k of Object.keys(VIEWS)) $("v-" + k).hidden = k !== ime;
+  document.querySelectorAll("nav.tabovi a").forEach(a => { if (a.dataset.v === ime) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
+  VIEWS[ime]();
+  if (naVrh) window.scrollTo(0, 0);
+}
+const sel = $("obitelj");
+sel.innerHTML = `<option value="">odaberite…</option>` + D.obitelji.map(o => `<option value="${o.id}">${esc(o.ime)}</option>`).join("");
+sel.value = obiteljId;
+sel.onchange = () => { obiteljId = sel.value; pisi("obitelj", obiteljId); ucitajObitelj(); prikazi(); sinkroniziraj(); };
+ucitajObitelj();
+window.addEventListener("hashchange", () => prikazi());
+window.addEventListener("online", () => sinkroniziraj());
+prikazi();
+ucitajServer();
+sinkroniziraj();
+</script>
+</body>
+</html>

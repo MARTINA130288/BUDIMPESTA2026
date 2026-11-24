@@ -663,7 +663,7 @@ function prijavljeno(akt) {
 }
 function plan() {
   const dan = D.dani.find(d => d.id === danId) || D.dani[1];
-  let h = `<h2>Plan po danima</h2><div class="prijedlog"><b>Prijedlog – još se potvrđuje</b><span class="mali">Konačni plan slažemo u hodu. Ono za što trebaju karte ili rezervacija dogovaramo prije – ovisno o tome što odlučite.</span></div><div class="dani" role="group" aria-label="Dan">${D.dani.map(d => `<button class="dan-btn" data-dan="${d.id}" aria-pressed="${d.id === dan.id}">${esc(d.kratko)}<small>${esc(d.datum)}</small></button>`).join("")}</div>`;
+  let h = `<h2>Plan po danima</h2><div class="prijedlog"><b>Prijedlog – još se potvrđuje</b><span class="mali">Plan je okviran: svatko može nešto preskočiti, odmoriti se ili se odvojiti od grupe, ovisno o tome što želi – samo javite ostalima gdje ćete se naći. Konačni plan slažemo u hodu. Ono za što trebaju karte ili rezervacija dogovaramo prije – ovisno o tome što odlučite.</span></div><div class="dani" role="group" aria-label="Dan">${D.dani.map(d => `<button class="dan-btn" data-dan="${d.id}" aria-pressed="${d.id === dan.id}">${esc(d.kratko)}<small>${esc(d.datum)}</small></button>`).join("")}</div>`;
   h += `<div class="filteri" role="group" aria-label="Prikaži">${[["sve", "Sve"], ["djeca", "Za djecu"], ["fak", "Fakultativno"], ["moje", "♥ Naše"]].map(([k, t]) => `<button class="chip" data-f="${k}" aria-pressed="${filter === k}">${t}</button>`).join("")}</div>`;
   h += `<div class="blok dan-kartica"><div class="dan-vrh"><span class="oznaka-sekcije">${esc(dan.naziv)}</span><h3>${esc(dan.tema)}</h3></div><div class="vozni-red">`;
   const st = dan.stavke.map((s, i) => ({ s, k: dan.id + i })).filter(({ s, k }) => {

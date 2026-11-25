@@ -760,6 +760,7 @@ const VIEWS = { pregled, plan, podsjetnik, javi };
    Dječji način (zaključavanje) više ne treba, pa se spremljena šifra briše i stranica se otključa. */
 if (location.hash === "#djeca") history.replaceState(null, "", "#pregled");
 try { localStorage.removeItem(P + "djecji"); } catch (e) {}
+pisi("roditelj", 1);   // oznaka za dječju aplikaciju: na ovom uređaju je roditeljska stranica, pa tamo pokaže link natrag
 function prikazi(naVrh = true) {
   const v = (location.hash || "#pregled").slice(1);
   let ime = VIEWS[v] ? v : "pregled";

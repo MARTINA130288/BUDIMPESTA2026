@@ -176,6 +176,9 @@ const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "
 const $ = id => document.getElementById(id);
 const mapa = q => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
 const DANI = { cet: "četvrtak", pet: "petak", sub: "subota", ned: "nedjelja" };
+const RODITELJI_URL = "https://martina130288.github.io/BUDIMPESTA2026/#pregled";
+/* Roditeljska stranica sprema podatke s prefiksom „bpa26:” (isti poslužitelj, isto spremište) */
+function roditeljskiUredaj() { try { return Object.keys(localStorage).some(k => k.startsWith("bpa26:")); } catch (e) { return false; } }
 
 /* Silueta Parlamenta (kao na roditeljskoj stranici) */
 const GRAD_SVG = (() => {
@@ -223,6 +226,8 @@ function pocetna() {
   h += `<div class="brzo"><a class="b-mjesta" href="#mjesta"><span aria-hidden="true">📍</span>Mjesta koja nas zovu<small>${D.mjesta_djeca.length} mjesta sa slikama i videima</small></a>
     <a class="b-kviz" href="#kviz"><span aria-hidden="true">🧠</span>Mali kviz<small>Koliko znaš o Budimpešti?</small></a></div>`;
   h += `<p class="napomena">Za put u autu ili večer prije polaska. 🎄</p>`;
+  // Natrag za roditelje (Martina 25.11. ostala zaglavljena ovdje): samo na uređaju na kojem je već otvarana roditeljska stranica
+  if (roditeljskiUredaj()) h += `<p class="napomena"><a href="${RODITELJI_URL}">↩ Roditelji: natrag na stranicu za obitelji</a></p>`;
   $("v-pocetna").innerHTML = h;
   $("jos").onclick = () => {
     znasI = (znasI + 1) % D.znas_li.length;

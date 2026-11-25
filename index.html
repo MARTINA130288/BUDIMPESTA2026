@@ -755,9 +755,10 @@ function javi() {
 
 /* ---------- Okvir ---------- */
 const VIEWS = { pregled, plan, podsjetnik, javi };
-/* Od 25.11. Kutak za djecu je zasebna aplikacija (djeca/). Stari link #djeca vodi tamo;
-   dječji način (zaključavanje) više ne treba, pa se spremljena šifra briše i stranica se otključa. */
-if (location.hash === "#djeca") location.replace(DJECA_URL);
+/* Od 25.11. Kutak za djecu je zasebna aplikacija (djeca/). Stari #djeca (zadnja kartica u aplikaciji, dječji način)
+   otvara Pregled, gdje je kartica s linkom za djecu – NE preusmjerava, jer je Martina 25.11. tako ostala u dječjoj aplikaciji.
+   Dječji način (zaključavanje) više ne treba, pa se spremljena šifra briše i stranica se otključa. */
+if (location.hash === "#djeca") history.replaceState(null, "", "#pregled");
 try { localStorage.removeItem(P + "djecji"); } catch (e) {}
 function prikazi(naVrh = true) {
   const v = (location.hash || "#pregled").slice(1);

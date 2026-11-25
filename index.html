@@ -196,67 +196,19 @@ header.top select.istakni { background: var(--tram); color: var(--tram-ink); out
 .stanje-slanja.greska { color: var(--fak); font-weight: 600; }
 .stanje-slanja .btn { padding: 4px 10px; font-size: 13px; }
 
-/* Kutak za djecu */
-.kutak { border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 12px; color: #fff; position: relative; overflow: hidden;
-  background: radial-gradient(circle at 88% 12%, rgba(255,255,255,.25) 0 18px, transparent 19px),
-              radial-gradient(circle at 8% 92%, rgba(255,255,255,.18) 0 26px, transparent 27px),
+/* Kartica „Za djecu” na Pregledu (od 25.11. djeca imaju svoju aplikaciju, djeca/) */
+.djeca-app { border-radius: 18px; padding: 16px; display: flex; flex-direction: column; gap: 10px; color: #fff; position: relative; overflow: hidden;
+  background: radial-gradient(circle at 90% 14%, rgba(255,255,255,.22) 0 18px, transparent 19px),
+              radial-gradient(circle at 97% 96%, rgba(255,255,255,.16) 0 24px, transparent 25px),
               linear-gradient(135deg, #6C4DF6 0%, #C247C9 55%, #FF7A59 100%); }
-.kutak-vrh { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
-.kutak-vrh h3 { font-weight: 800; font-size: 20px; color: #fff; }
-.kutak-zn { background: #FFD93D; color: #3A2A00; font-weight: 800; font-size: 13px; border-radius: 999px; padding: 3px 10px; transform: rotate(-3deg); }
-.kutak-kartica { background: #fff; color: #23164D; border-radius: 14px; padding: 14px; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; align-items: start; box-shadow: 0 6px 0 rgba(0,0,0,.12); }
-.kutak-kartica p { margin: 0; font-size: 16px; line-height: 1.45; font-weight: 500; }
-.kutak-ik { font-size: 44px; line-height: 1; grid-row: span 2; }
-.kutak-br { font-size: 12px; font-weight: 700; color: #8B7BC8; }
-.kutak-kartica.skok { animation: skok .35s ease-out; }
-@keyframes skok { 0% { transform: scale(.94) rotate(-1deg); opacity: .4; } 100% { transform: none; opacity: 1; } }
-.kutak-dno { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-.tocke { display: flex; gap: 5px; }
-.tocke i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.45); }
-.tocke i.on { background: #FFD93D; transform: scale(1.3); }
-.kutak-btn { background: #FFD93D; color: #3A2A00; border: 0; border-radius: 999px; padding: 10px 16px; font-weight: 800; cursor: pointer; box-shadow: 0 4px 0 rgba(0,0,0,.18); }
-.kutak-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 rgba(0,0,0,.18); }
-
-.mjesta-vrh { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-top: 4px; }
-.mjesta { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 2px 2px 10px; overscroll-behavior-x: contain; }
-.mjesto { flex: 0 0 78%; max-width: 290px; scroll-snap-align: start; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
-.mjesto-slika { position: relative; aspect-ratio: 16 / 10; display: grid; place-items: center; background: linear-gradient(135deg, #6C4DF6, #C247C9 55%, #FF7A59); }
-.mjesto-slika img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.mjesto-veliki { font-size: 64px; line-height: 1; filter: drop-shadow(0 4px 6px rgba(0,0,0,.25)); }
-.mjesto-ik { position: absolute; left: 8px; top: 8px; font-size: 22px; background: rgba(255,255,255,.92); border-radius: 10px; width: 38px; height: 38px; display: grid; place-items: center; }
-.mjesto-slika .foto { position: absolute; right: 6px; bottom: 6px; font-size: 10px; color: #fff; background: rgba(0,0,0,.45); border-radius: 4px; padding: 1px 5px; text-decoration: none; }
-.mjesto-tijelo { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
-.mjesto-tijelo h4 { margin: 0; font-family: var(--f-display); font-size: 17px; }
-.mjesto-tijelo p { margin: 0; font-size: 14px; flex: 1; }
-.mjesto-gumbi { display: flex; gap: 6px; flex-wrap: wrap; }
-.mjesto-gumbi a { font-size: 13px; font-weight: 600; text-decoration: none; border: 1px solid var(--line); background: var(--bg); border-radius: 999px; padding: 5px 10px; }
-/* Dječji način */
-body.zakljucano nav.tabovi, body.zakljucano #mismo, body.zakljucano .kodtraka { display: none !important; }
-.dj-bar { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; background: var(--ink); color: var(--bg); border-radius: 12px; padding: 8px 8px 8px 14px; font-size: 14px; font-weight: 600; }
-.dj-bar .btn { padding: 6px 12px; font-size: 13px; background: var(--bg); color: var(--ink); border: 0; }
-.dj-forma { display: flex; flex-direction: column; gap: 6px; }
-.dj-roditelji summary { font-size: 14px; }
-.dj-roditelji .kod-unos input { background: var(--bg); border: 1px solid var(--line); }
-.kutak.sat-djeca { background: radial-gradient(circle at 92% 20%, rgba(255,255,255,.22) 0 16px, transparent 17px),
-  radial-gradient(circle at 5% 90%, rgba(255,255,255,.16) 0 22px, transparent 23px),
-  linear-gradient(135deg, #FF7A59 0%, #F2C200 100%); color: #3A2A00; }
-.kutak.sat-djeca h3 { color: #3A2A00; }
-.kutak.sat-djeca .kutak-zn { background: #fff; color: #3A2A00; }
-.kutak.sat-djeca .sat > div { background: #fff; color: #23164D; box-shadow: 0 4px 0 rgba(0,0,0,.12); }
-.kutak.sat-djeca .sat > .sek { background: #6C4DF6; color: #fff; }
-.kutak.kviz { background: radial-gradient(circle at 90% 85%, rgba(255,255,255,.2) 0 22px, transparent 23px),
-  radial-gradient(circle at 6% 10%, rgba(255,255,255,.18) 0 16px, transparent 17px),
-  linear-gradient(135deg, #0F9D8A 0%, #2F7BE5 60%, #6C4DF6 100%); }
-.kv-odgovori { display: flex; flex-direction: column; gap: 8px; }
-.kv-odg { background: rgba(255,255,255,.95); color: #23164D; border: 0; border-radius: 12px; padding: 12px 14px; font-weight: 700; font-size: 16px; text-align: left; cursor: pointer; box-shadow: 0 4px 0 rgba(0,0,0,.15); }
-.kv-odg:active:not(:disabled) { transform: translateY(2px); box-shadow: 0 2px 0 rgba(0,0,0,.15); }
-.kv-odg:disabled { cursor: default; }
-.kv-odg.tocno { background: #2BB673; color: #fff; }
-.kv-odg.krivo { background: #F0506E; color: #fff; }
-.kv-odg.sivo { opacity: .55; }
-.kv-obj { background: rgba(255,255,255,.95); color: #23164D; border-radius: 12px; padding: 10px 12px; font-size: 14.5px; line-height: 1.45; border-left: 6px solid #2BB673; }
-.kv-obj.ne { border-left-color: #F0506E; }
-.kutak-kartica.kraj p { font-size: 17px; }
+.djeca-app h3 { color: #fff; font-weight: 800; font-size: 20px; }
+.djeca-app .oznaka-sekcije { color: #FFE9A8; }
+.djeca-app p { margin: 0; font-size: 14.5px; }
+.djeca-app .ikona { --ik: rgba(255,255,255,.22) !important; }
+.djeca-app .redak .btn { background: #fff; color: #23164D; border: 0; }
+.djeca-app .redak .btn.zuti { background: #FFD93D; color: #3A2A00; font-weight: 800; }
+.djeca-app details summary { cursor: pointer; font-size: 13.5px; font-weight: 600; }
+.djeca-app ol { margin: 6px 0 0; padding-left: 20px; font-size: 13.5px; display: flex; flex-direction: column; gap: 2px; }
 
 /* Javi se */
 .sazetak { white-space: pre-wrap; font-size: 14px; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px; overflow-wrap: anywhere; }
@@ -269,7 +221,7 @@ textarea { width: 100%; min-height: 96px; border: 1px solid var(--line); border-
 
 nav.tabovi { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; background: var(--surface); border-top: 1px solid var(--line);
   padding-left: max(8px, env(safe-area-inset-left, 0px)); padding-right: max(8px, env(safe-area-inset-right, 0px)); padding-bottom: env(safe-area-inset-bottom, 0px); }
-nav.tabovi .in { max-width: 640px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); }
+nav.tabovi .in { max-width: 640px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
 nav.tabovi a { text-decoration: none; text-align: center; padding: 10px 2px 12px; font-size: 12.5px; min-width: 0; overflow-wrap: anywhere; font-weight: 500; color: var(--muted); border-top: 3px solid transparent; }
 nav.tabovi a[aria-current="page"] { color: var(--ink); font-weight: 700; }
 nav.tabovi a .ik { display: block; width: fit-content; margin: 0 auto 2px; padding: 1px 14px; border-radius: 999px; font-size: 18px; line-height: 1.25; transition: background .2s; }
@@ -360,7 +312,6 @@ nav.tabovi a[aria-current="page"] .ik { background: var(--tram); color: var(--tr
   <div class="kodtraka" id="kodtraka" aria-live="polite"></div>
   <section id="v-pregled"></section>
   <section id="v-plan" hidden></section>
-  <section id="v-djeca" hidden></section>
   <section id="v-podsjetnik" hidden></section>
   <section id="v-javi" hidden></section>
 </main>
@@ -368,7 +319,6 @@ nav.tabovi a[aria-current="page"] .ik { background: var(--tram); color: var(--tr
 <nav class="tabovi" aria-label="Kartice"><div class="in">
   <a href="#pregled" data-v="pregled"><span class="ik" aria-hidden="true">⌂</span>Pregled</a>
   <a href="#plan" data-v="plan"><span class="ik" aria-hidden="true">☰</span>Plan</a>
-  <a href="#djeca" data-v="djeca"><span class="ik" aria-hidden="true">🎈</span>Kutak za djecu</a>
   <a href="#podsjetnik" data-v="podsjetnik"><span class="ik" aria-hidden="true">✓</span>Podsjetnik</a>
   <a href="#javi" data-v="javi"><span class="ik" aria-hidden="true">✉</span>Javi se</a>
 </div></nav>
@@ -457,9 +407,7 @@ async function sinkroniziraj(dodatno) {
 }
 function kodTraka() {
   const el = $("kodtraka");
-  // Kutak za djecu ne treba obitelj ni kod (Martina 24.11.): tu nema okvira za odabir obitelji
   const kartica = (location.hash || "#pregled").slice(1) || "pregled";
-  if (kartica === "djeca") { el.innerHTML = ""; $("obitelj").classList.remove("istakni"); return; }
   // Okvir „Najprije odaberite svoju obitelj” samo na Pregledu (Martina 24.11.)
   if (!obiteljId && kartica !== "pregled") { el.innerHTML = ""; $("obitelj").classList.remove("istakni"); return; }
   $("obitelj").classList.toggle("istakni", !obiteljId);
@@ -552,46 +500,6 @@ function uEur(c) {
   const b = (c.match(/\d[\d.]*/g) || []).map(x => Number(x.replace(/\./g, "")) / TECAJ);
   return b.length ? "≈ " + b.map(e => (Math.round(e * 10) / 10).toFixed(2).replace(".", ",")).join("–") + " €" : "";
 }
-/* Kutak za djecu: zanimljivost = [slikica, tekst] (stari oblik: samo tekst) */
-function zanimljivost(i) {
-  const z = D.znas_li[i], [ik, t] = Array.isArray(z) ? z : ["💡", z];
-  return `<span class="kutak-ik" aria-hidden="true">${ik}</span><p>${esc(t)}</p><span class="kutak-br">${i + 1} / ${D.znas_li.length}</span>`;
-}
-/* Mali kviz (Martina 23.11.): svaka igra = KVIZ_N nasumičnih pitanja iz D.kviz; stanje ostaje dok je stranica otvorena */
-const KVIZ_N = 10;
-function izmijesaj() {
-  const a = D.kviz.map((_, k) => k);
-  for (let k = a.length - 1; k > 0; k--) { const j = Math.floor(Math.random() * (k + 1)); [a[k], a[j]] = [a[j], a[k]]; }
-  return a.slice(0, KVIZ_N);
-}
-const kv = { i: 0, bod: 0, odg: null, red: izmijesaj() };
-function kvizHtml() {
-  const N = kv.red.length;
-  const vrh = `<div class="kutak-vrh"><h3>🧠 Mali kviz</h3><span class="kutak-zn">⭐ ${kv.bod} / ${N}</span></div>`;
-  if (kv.i >= N) {
-    const p = kv.bod === N ? "Svaka čast – sve točno! 🏆" : kv.bod >= N * 0.7 ? "Odlično! Pravi ste znalci Budimpešte. 🎉" : kv.bod >= N * 0.4 ? "Dobro je! Na putu ćete naučiti još. 👍" : "Nema veze – u Budimpešti sve vidite uživo! 😊";
-    return vrh + `<div class="kutak-kartica kraj"><span class="kutak-ik" aria-hidden="true">${kv.bod === N ? "🏆" : "🎉"}</span><p><b>${kv.bod} od ${N} točnih.</b><br>${p}</p></div>
-      <div class="kutak-dno"><span class="mali">${D.kviz.length > N ? "Nova igra = nova pitanja!" : ""}</span><button class="kutak-btn" data-kv="opet">Igraj ponovno 🔄</button></div>`;
-  }
-  const q = D.kviz[kv.red[kv.i]], odg = kv.odg;
-  const gumbi = q.o.map((t, k) => {
-    const c = odg === null ? "" : k === q.t ? " tocno" : k === odg ? " krivo" : " sivo";
-    return `<button class="kv-odg${c}" data-kv="${k}"${odg !== null ? " disabled" : ""}>${esc(t)}${odg !== null && k === q.t ? " ✓" : odg === k && k !== q.t ? " ✗" : ""}</button>`;
-  }).join("");
-  const obj = odg === null ? "" : `<div class="kv-obj ${odg === q.t ? "da" : "ne"}" aria-live="polite"><b>${odg === q.t ? "Bravo! 🎉" : "Ups! 🙈"}</b> ${esc(q.obj)}</div>`;
-  return vrh + `<div class="kutak-kartica"><span class="kutak-ik" aria-hidden="true">${q.ik || "❓"}</span><p>${esc(q.p)}</p><span class="kutak-br">Pitanje ${kv.i + 1} / ${N}</span></div>
-    <div class="kv-odgovori">${gumbi}</div>${obj}
-    ${odg !== null ? `<div class="kutak-dno"><span></span><button class="kutak-btn" data-kv="dalje">${kv.i + 1 < N ? "Sljedeće pitanje →" : "Rezultat ⭐"}</button></div>` : ""}`;
-}
-function kvizKlik(ev) {
-  const b = ev.target.closest("[data-kv]"); if (!b || b.disabled) return;
-  const v = b.dataset.kv;
-  if (v === "dalje") { kv.i++; kv.odg = null; }
-  else if (v === "opet") { kv.i = 0; kv.bod = 0; kv.odg = null; kv.red = izmijesaj(); }
-  else if (kv.odg === null) { kv.odg = Number(v); if (kv.odg === D.kviz[kv.red[kv.i]].t) kv.bod++; }
-  const el = $("kviz"); el.innerHTML = kvizHtml();
-  if (v === "dalje" || v === "opet") { const k = el.querySelector(".kutak-kartica"); if (k) k.classList.add("skok"); }
-}
 /* Naslov kartice s ikonom u obojanom kvadratu (izgled 24.11.); ozn i naslov su već sigurni (esc) */
 const kvrh = (ik, boja, ozn, naslov) => `<div class="kartica-vrh"><span class="ikona ${boja}" aria-hidden="true">${ik}</span><div>${ozn ? `<span class="oznaka-sekcije">${ozn}</span>` : ""}<h3>${naslov}</h3></div></div>`;
 /* Uz svaki iznos u HUF dodaje euro (Martina 24.11.): „4.500 HUF” → „4.500 HUF (≈ 11,50 €)”, „2.000–2.500 HUF” → „… (≈ 5,10–6,40 €)”.
@@ -605,6 +513,18 @@ function sEurima(t) {
   });
 }
 const escE = t => sEurima(esc(t));
+/* Kartica „Za djecu” (Martina 25.11.): Kutak za djecu je preseljen u zasebnu aplikaciju samo za djecu */
+const DJECA_URL = "https://martina130288.github.io/BUDIMPESTA2026/djeca/";
+const djecaUrl = () => DJECA_URL;
+function djecaKartica() {
+  const u = djecaUrl();
+  const txt = `🎈 Budimpešta za djecu – odbrojavanje do puta, zanimljivosti, mjesta sa slikama i videima i kviz:
+${u}`;
+  return `<div class="djeca-app">${kvrh("🎈", "", "Za djecu · njihova aplikacija", "Budimpešta za djecu")}
+    <p>Odbrojavanje do puta, zanimljivosti o Budimpešti, mjesta sa slikama i videima i mali kviz. Djeca ne vide ništa od ove stranice: ni obitelj, ni kod, ni cijene – i ništa ne mogu poslati.</p>
+    <div class="redak"><a class="btn zuti" href="${esc(u)}" target="_blank" rel="noopener">Otvori za djecu ↗</a><a class="btn" href="https://wa.me/?text=${encodeURIComponent(txt)}" target="_blank" rel="noopener">Pošalji djetetu (WhatsApp)</a><button class="btn" type="button" id="djeca-kopiraj">Kopiraj link</button></div>
+    <details><summary>Kako djetetu staviti ikonu na mobitel ili tablet</summary><ol><li>Na djetetovom mobitelu ili tabletu otvorite link.</li><li>iPhone/iPad (Safari): tipka Dijeli → „Dodaj na početni zaslon”. Android (Chrome): ⋮ → „Dodaj na početni zaslon”.</li><li>Pojavi se ikona 🎈 „BP za djecu”. Može i na vašem mobitelu, uz ovu aplikaciju.</li></ol></details></div>`;
+}
 function pregled() {
   const o = ob();
   const pk = o ? D.parking[o.parking] : null;
@@ -622,6 +542,7 @@ function pregled() {
       : `<a class="btn glavni" href="#javi" style="align-self:flex-start">Pošalji odgovor Martini</a>`) : ""}
   </div>`;
   h += `<div class="rok"><div class="kartica-vrh"><span class="ikona ik-bijela" aria-hidden="true">🗳️</span><b>Do ${esc(D.javiti_do)} javite na što biste voljeli ići</b></div><span class="mali">Fakultativne aktivnosti: u Planu kod svake izaberite <strong>Idemo svi</strong>, <strong>Samo djeca</strong> ili <strong>Ne idemo</strong>. ${esc(D.javiti_zasto)}</span><a class="btn" href="#plan">Označi u planu</a></div>`;
+  h += djecaKartica();
   if (o) {
     h += `<div class="blok">${kvrh("🏠", "ik-zelena", `Obitelj ${esc(o.ime)}`, "Vaš smještaj u Golden Staru")}<dl class="kv">
       <dt>Jedinica</dt><dd>${esc(o.jedinica)}</dd>
@@ -644,6 +565,7 @@ function pregled() {
     <b class="mali">Android (Chrome)</b><ol><li>Gore desno ⋮.</li><li>„Dodaj na početni zaslon” ili „Instaliraj aplikaciju”.</li></ol></details>`;
   h += `<p class="mut mali" style="margin:0">Ažurirano ${esc(D.azurirano)}. Plan i rokovi mogu se još mijenjati.</p>`;
   $("v-pregled").innerHTML = h;
+  if ($("djeca-kopiraj")) $("djeca-kopiraj").onclick = () => { try { navigator.clipboard.writeText(djecaUrl()).then(() => toast("Link za djecu je kopiran"), () => toast(djecaUrl())); } catch (e) { toast(djecaUrl()); } };
   if ($("instaliraj")) $("instaliraj").onclick = async () => { const e = instalacija; instalacija = null; e.prompt(); try { await e.userChoice; } catch (_) {} prikazi(false); };
   $("v-pregled").querySelectorAll("[data-zg]").forEach(b => b.onclick = () => {
     if (!obiteljId) { toast("Najprije odaberite obitelj gore desno"); return; }
@@ -831,71 +753,15 @@ function javi() {
   };
 }
 
-/* ---------- Djeca (zasebna kartica od 23.11.: Kutak za djecu i Mali kviz) ---------- */
-let znasI = Math.floor(Math.random() * D.znas_li.length);
-/* Dječji način (Martina 23.11.): mobitel ostaje na Kutku za djecu dok roditelj ne upiše šifru.
-   Šifra se pamti samo na tom mobitelu; kod obitelji također otključava (ako je upisan). */
-let djecjiPin = citaj("djecji", "");
-function djecjiNacinHtml() {
-  if (djecjiPin) return `<div class="dj-bar"><span>🔒 Dječji način – ostale kartice su zaključane</span><button class="btn" id="otkljucaj" type="button">Otključaj</button></div>
-    <form class="dj-forma" id="otkl-forma" hidden><label class="mali" for="otkl-pin">Roditelji: upišite šifru${kod ? " ili kod obitelji" : ""}</label>
-      <div class="kod-unos"><input id="otkl-pin" type="password" inputmode="${kod ? "text" : "numeric"}" autocomplete="off" maxlength="12" placeholder="šifra"><button class="btn" type="submit">Otključaj</button></div></form>`;
-  return `<details class="blok dj-roditelji"><summary>🔒 Za roditelje: dječji način</summary>
-    <p class="mali" style="margin:0">Mobitel ostaje na ovoj kartici: dijete ne može otvoriti Pregled, Plan, Podsjetnik ni Javi se ni promijeniti obitelj. Za izlaz treba šifra od 4 broja koju sada odaberete${kod ? " (ili kod obitelji)" : ""}.</p>
-    <form class="kod-unos" id="zakl-forma"><input id="zakl-pin" type="password" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="šifra, 4 broja" aria-label="Šifra od 4 broja"><button class="btn glavni" type="submit">Zaključaj</button></form>
-    <p class="mali mut" style="margin:0">Linkovi na videe i stranice i dalje se otvaraju u pregledniku. Za potpuno zaključavanje mobitela: Android „Prikvačivanje zaslona”, iPhone „Vođeni pristup”.</p></details>`;
-}
-function djecjiNacinVezi() {
-  if ($("zakl-forma")) $("zakl-forma").onsubmit = ev => {
-    ev.preventDefault();
-    const v = $("zakl-pin").value.trim();
-    if (!/^\d{4}$/.test(v)) { toast("Šifra mora imati točno 4 broja"); return; }
-    djecjiPin = v; pisi("djecji", v); toast("Dječji način je uključen"); prikazi();
-  };
-  if ($("otkljucaj")) $("otkljucaj").onclick = () => { $("otkl-forma").hidden = false; $("otkl-pin").focus(); };
-  if ($("otkl-forma")) $("otkl-forma").onsubmit = ev => {
-    ev.preventDefault();
-    const v = $("otkl-pin").value.replace(/\s/g, "");
-    if (v === djecjiPin || (kod && v.toUpperCase() === kod)) { djecjiPin = ""; pisi("djecji", ""); toast("Otključano"); prikazi(); }
-    else { $("otkl-pin").value = ""; toast("Pogrešna šifra"); }
-  };
-}
-function djeca() {
-  let h = djecjiPin ? djecjiNacinHtml() : "";
-  h += `<h2>🎈 Kutak za djecu</h2><p class="mut" style="margin:0">Zanimljivosti o Budimpešti, mjesta koja nas zovu (slike i videi) i mali kviz – za put u autu ili večer prije polaska.</p>`;
-  if (new Date() < new Date(D.polazak)) h += `<div class="kutak sat-djeca"><div class="kutak-vrh"><h3>⏰ Još toliko do Budimpešte!</h3><span class="kutak-zn">🚗 čet 10.12. u 16 h</span></div>
-    <div class="sat" data-sat role="timer" aria-label="Vrijeme do polaska">${satHtml()}</div></div>`;
-  if (!djecjiPin) h += djecjiNacinHtml();
-  h += `<div class="kutak"><div class="kutak-vrh"><h3>Znaš li?</h3><span class="kutak-zn">💡 ${D.znas_li.length} zanimljivosti</span></div>
-    <div class="kutak-kartica" id="znas" aria-live="polite">${zanimljivost(znasI)}</div>
-    <div class="kutak-dno"><span class="tocke" aria-hidden="true">${D.znas_li.length <= 10 ? D.znas_li.map((_, k) => `<i${k === znasI ? ' class="on"' : ""}></i>`).join("") : ""}</span><button class="kutak-btn" id="jos">Još jedno ✨</button></div></div>`;
-  if (D.mjesta_djeca && D.mjesta_djeca.length) {
-    h += `<div class="mjesta-vrh"><h3>📍 Mjesta koja nas zovu</h3><span class="mali mut">povucite lijevo →</span></div>
-      <div class="mjesta" role="list">${D.mjesta_djeca.map(m => `<article class="mjesto" role="listitem">
-        <div class="mjesto-slika">${m.slika ? `<img src="${esc(m.slika)}" alt="${esc(m.naziv)}" loading="lazy" referrerpolicy="no-referrer"><span class="mjesto-ik" aria-hidden="true">${m.ik}</span>${m.izvor ? `<a class="foto" href="${esc(m.izvor)}" target="_blank" rel="noopener">Foto: Wikimedia</a>` : ""}` : `<span class="mjesto-veliki" aria-hidden="true">${m.ik}</span>`}</div>
-        <div class="mjesto-tijelo"><span class="zn djeca" style="align-self:flex-start">${esc(m.kad)}</span><h4>${esc(m.naziv)}</h4><p>${esc(m.tekst)}</p>
-          <div class="mjesto-gumbi"><a href="https://www.youtube.com/results?search_query=${encodeURIComponent(m.video || m.naziv + " Budapest")}" target="_blank" rel="noopener">▶ Video</a>${m.link ? `<a href="${esc(m.link)}" target="_blank" rel="noopener">🔗 Stranica</a>` : ""}${m.mapa ? `<a href="${mapa(m.mapa)}" target="_blank" rel="noopener">📍 Karta</a>` : ""}</div></div>
-      </article>`).join("")}</div>`;
-  }
-  if (D.kviz && D.kviz.length) h += `<div class="kutak kviz" id="kviz">${kvizHtml()}</div>`;
-  $("v-djeca").innerHTML = h;
-  $("jos").onclick = () => {
-    znasI = (znasI + 1) % D.znas_li.length;
-    const k = $("znas"); k.innerHTML = zanimljivost(znasI); k.classList.remove("skok"); void k.offsetWidth; k.classList.add("skok");
-    document.querySelectorAll(".tocke i").forEach((t, n) => t.classList.toggle("on", n === znasI));
-  };
-  if ($("kviz")) $("kviz").onclick = kvizKlik;
-  djecjiNacinVezi();
-}
-
 /* ---------- Okvir ---------- */
-const VIEWS = { pregled, plan, djeca, podsjetnik, javi };
+const VIEWS = { pregled, plan, podsjetnik, javi };
+/* Od 25.11. Kutak za djecu je zasebna aplikacija (djeca/). Stari link #djeca vodi tamo;
+   dječji način (zaključavanje) više ne treba, pa se spremljena šifra briše i stranica se otključa. */
+if (location.hash === "#djeca") location.replace(DJECA_URL);
+try { localStorage.removeItem(P + "djecji"); } catch (e) {}
 function prikazi(naVrh = true) {
   const v = (location.hash || "#pregled").slice(1);
   let ime = VIEWS[v] ? v : "pregled";
-  // Dječji način: samo Kutak za djecu
-  document.body.classList.toggle("zakljucano", !!djecjiPin);
-  if (djecjiPin && ime !== "djeca") { history.replaceState(null, "", "#djeca"); ime = "djeca"; naVrh = true; }
   kodTraka();
   if (!naVrh && ime === "javi") return; // ne prekidati pisanje prijedloga
   for (const k of Object.keys(VIEWS)) $("v-" + k).hidden = k !== ime;
@@ -911,7 +777,7 @@ ucitajObitelj();
 window.addEventListener("hashchange", () => prikazi());
 window.addEventListener("online", () => sinkroniziraj());
 /* Gumb Osvježi (Martina 24.11.): u aplikaciji na početnom zaslonu nema tipke preglednika za osvježavanje.
-   Najprije dohvati stranicu mimo spremljene kopije (GitHub je pamti do 10 min), pa učitaj ponovno; kod, kvačice i dječji način ostaju. */
+   Najprije dohvati stranicu mimo spremljene kopije (GitHub je pamti do 10 min), pa učitaj ponovno; kod i kvačice ostaju. */
 $("osvjezi").onclick = async () => {
   const b = $("osvjezi"); b.classList.add("vrti"); b.disabled = true;
   try { await fetch(location.pathname, { cache: "reload" }); } catch (e) {}
